@@ -2,6 +2,7 @@
   "name": "my-bhumi-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://Vamsikrishna1234-coder.github.io/My_Bhoomee",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -44,5 +45,4 @@
     "globals": "^16.4.0",
     "vite": "^7.1.7"
   }
-  
 }
