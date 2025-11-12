@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+
+/* === CRITICAL: FULL WIDTH & HEIGHT FIX === */
+html, body, #root, #__next {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Optional: Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item img {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-item img {
+  object-fit: cover;
+}
