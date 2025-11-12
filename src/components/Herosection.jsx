@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import home1 from "../assets/images/wooden/wooden-villa.jpg";
 import home2 from "../assets/images/glassvilla/glass villa2.jpg";
-import home3 from "../assets/images/manduva/kerala manduva1.jpg";
+import home3 from "../assets/images/manduva/kerala manduva4.jpg";
 import home4 from "../assets/images/wooden/wooden garden.jpg";
 import Preloader from "./Preloader";
 

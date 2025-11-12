@@ -13,6 +13,7 @@ import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import Projects from './pages/Projects.jsx';
 import Gallery from './pages/Gallery.jsx';
+import Blogs from './pages/Blogs.jsx';
 import Contact from './pages/Contact.jsx';
 
 
@@ -37,6 +38,7 @@ function App() {
               <Route path="/sitevisit" element={<SiteVisit />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/blogs" element={<Blogs/>} />
               <Route path="/contact" element={<Contact />} />
               
             </Routes>

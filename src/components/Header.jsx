@@ -13,7 +13,7 @@ const Header = () => {
     { label: "About Us", to: "/aboutus" },
     { label: "Our Projects", to: "/projects" },
     { label: "Gallery", to: "/gallery" },
-    { label: "Blogs", to: "/" },
+    { label: "Blogs", to: "/blogs" },
     { label: "Contact Us", to: "/contact" },
   ];
 

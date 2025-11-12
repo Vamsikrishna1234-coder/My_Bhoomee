@@ -2,14 +2,13 @@
   "name": "my-bhumi-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Vamsikrishna1234-coder.github.io/My_Bhoomee",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
+    
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
