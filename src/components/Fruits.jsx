@@ -1,7 +1,7 @@
 import React from "react";
 import mango from "../assets/images/mango.png"
 import orange from "../assets/images/orange.png"
-import Custardapple from "../assets/images/Custard apple.jpg"
+import Custardapple from "../assets/images/custard apple.jpg"
 import Guava from "../assets/images/guava.jpg"
 import Lemon from "../assets/images/lemon.jpg"
 import coconut from "../assets/images/coconut.jpg"
