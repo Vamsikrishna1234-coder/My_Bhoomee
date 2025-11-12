@@ -4,7 +4,7 @@ import aboutBg from "../assets/images/wooden/wooden-villa.jpg";
 const AboutHero = () => {
   return (
     <div
-      className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+      className="relative h-[70vh] flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${aboutBg})` }} 
     >
       {/* Dark overlay */}
