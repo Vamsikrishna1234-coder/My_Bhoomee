@@ -1,5 +1,5 @@
 import React from "react";
-import aboutBg from "../assets/images/wooden/wooden-villa.jpg"; 
+import aboutBg from "../assets/images/wooden/wooden-villa1.jpg"; 
 
 const AboutHero = () => {
   return (
@@ -7,9 +7,6 @@ const AboutHero = () => {
       className="relative h-[80vh] flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${aboutBg})` }} 
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
-
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">About MyBhumi</h1>

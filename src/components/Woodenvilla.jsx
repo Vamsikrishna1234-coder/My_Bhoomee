@@ -68,7 +68,7 @@ const Woodenvilla = () => {
                 alt={`Villa ${index + 1}`}
                 className="w-full h-[320px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
             </div>
           ))}
         </div>

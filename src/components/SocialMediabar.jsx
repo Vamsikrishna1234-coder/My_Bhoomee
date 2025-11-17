@@ -13,7 +13,7 @@ const SocialBar = () => {
     <div className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-50">
       {/* WhatsApp */}
       <a
-        href=""
+        href="https://wa.me/916304445766"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"

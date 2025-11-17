@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { ChevronDown, MapPin, Shield, Users } from "lucide-react";
-import chooseus1 from "../assets/images/chooseus img1.jpg"
-import chooseus2 from "../assets/images/chooseus img2.jpg"
-import chooseus3 from "../assets/images/chooseus img3.jpg"
+import chooseus1 from "../assets/images/chooseus img1.jpg";
+import chooseus2 from "../assets/images/chooseus img2.jpg";
+import chooseus3 from "../assets/images/chooseus img3.jpg";
 
 const WhyChooseUs = () => {
-  const [activeIndex, setActiveIndex] = useState(null);     
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const reasons = [
     {
@@ -18,8 +18,7 @@ const WhyChooseUs = () => {
         "Clear land titles with no legal disputes",
         "Government-approved layouts",
       ],
-      image:
-        chooseus1,
+      image: chooseus1,
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -27,12 +26,11 @@ const WhyChooseUs = () => {
       description:
         "Our properties are strategically located with excellent connectivity and high potential for appreciation.",
       details: [
-        "Close to major highways and transport hubs",
-        "Near schools, hospitals, and shopping centers",
+        "Close to major highways & transport hubs",
+        "Near schools, hospitals & shopping centers",
         "High appreciation potential areas",
       ],
-      image:
-        chooseus2,
+      image: chooseus2,
     },
     {
       icon: <Users className="w-6 h-6" />,
@@ -44,8 +42,7 @@ const WhyChooseUs = () => {
         "Flexible payment plans",
         "Complete documentation assistance",
       ],
-      image:
-        chooseus3,
+      image: chooseus3,
     },
   ];
 
@@ -54,66 +51,65 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-[#11689B]">
+    <section className="py-20 px-6 bg-gradient-to-r from-white via-[#EFF7FF] to-[#D9EEFF]">
       <div className="max-w-7xl mx-auto">
+
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-black text-[#11689B] mb-4 tracking-tight">
             Why Choose MyBhumi?
           </h2>
-          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Experience trust, transparency, and excellence in every plot you own.
           </p>
         </div>
 
-        {/* Main Content - Accordion Left, Image Right */}
+        {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Accordion */}
+          
+          {/* Accordion */}
           <div className="space-y-6">
             {reasons.map((reason, index) => (
-              <div
-                key={index}
-                className="group"
-              >
-                {/* Accordion Header */}
+              <div key={index} className="group">
+
+                {/* Accordion header */}
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className={`w-full text-left rounded-2xl p-6 flex items-center justify-between transition-all duration-500 shadow-lg hover:shadow-xl border-2 ${
-                    activeIndex === index
-                      ? "bg-[#11689B] text-white border-[#11689B] shadow-2xl"
-                      : "bg-white text-gray-800 border-gray-200 hover:border-[#11689B]/30"
-                  }`}
+                  className={`w-full text-left rounded-2xl p-6 flex items-center justify-between transition-all duration-500 shadow-lg border-2 
+                    ${
+                      activeIndex === index
+                        ? "bg-[#11689B] text-white border-[#11689B]"
+                        : "bg-white text-gray-800 border-gray-200 hover:border-[#11689B]/40"
+                    }`}
                 >
                   <div className="flex items-center gap-5">
                     <div
-                      className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                        activeIndex === index
-                          ? "bg-white/20"
-                          : "bg-[#11689B]/10"
-                      }`}
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 
+                        ${
+                          activeIndex === index
+                            ? "bg-white/25 text-white"
+                            : "bg-[#11689B]/10 text-[#11689B]"
+                        }`}
                     >
-                      <div className={activeIndex === index ? "text-white" : "text-[#11689B]"}>
-                        {reason.icon}
-                      </div>
+                      {reason.icon}
                     </div>
-                    <h3 className="text-xl font-bold">
-                      {reason.title}
-                    </h3>
+                    <h3 className="text-xl font-bold">{reason.title}</h3>
                   </div>
+
                   <ChevronDown
-                    className={`w-6 h-6 transition-transform duration-500 ${
-                      activeIndex === index ? "rotate-180 text-white" : "text-[#11689B]"
-                    }`}
+                    className={`w-6 h-6 transition-transform duration-500 
+                      ${
+                        activeIndex === index
+                          ? "rotate-180 text-white"
+                          : "text-[#11689B]"
+                      }`}
                   />
                 </button>
 
                 {/* Accordion Content */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    activeIndex === index
-                      ? "max-h-96 opacity-100 mt-4"
-                      : "max-h-0 opacity-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-500 ease-in-out 
+                  ${activeIndex === index ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                 >
                   <div className="bg-white rounded-2xl p-6 border-l-4 border-[#11689B] shadow-inner">
                     <p className="text-gray-700 mb-5 leading-relaxed">
@@ -145,11 +141,12 @@ const WhyChooseUs = () => {
                     </ul>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
 
-          {/* Right Side - Dynamic Image */}
+          {/* Image Section */}
           <div className="relative">
             <div className="sticky top-24">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-[#11689B]/20">
@@ -162,11 +159,10 @@ const WhyChooseUs = () => {
                   alt={reasons[activeIndex ?? 0].title}
                   className="w-full h-96 lg:h-[380px] object-cover transition-all duration-700 ease-in-out"
                 />
-                
-                
+
                 {/* Overlay Text */}
-                <div className="absolute bottom-8 left-8 right-8 text-white">
-                  <h3 className="text-3xl font-bold mb-2">
+                <div className="absolute bottom-8 left-8 right-8 text-white drop-shadow-md">
+                  <h3 className="text-3xl font-bold">
                     {reasons[activeIndex ?? 0].title}
                   </h3>
                   <p className="text-lg opacity-90">
@@ -176,6 +172,7 @@ const WhyChooseUs = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

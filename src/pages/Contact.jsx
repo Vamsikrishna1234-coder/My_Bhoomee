@@ -13,150 +13,151 @@ const Contact = () => {
     setStatus({ ok: false, msg: "" });
 
     try {
-      const result = await emailjs.sendForm(
-        "service_oqpz6aa",      // <-- replace
-        "template_wf39q4g",     // <-- replace
+      await emailjs.sendForm(
+        "service_oqpz6aa",
+        "template_wf39q4g",
         formRef.current,
-        "V51DwRUepCfuPwNBH"       // <-- replace
+        "V51DwRUepCfuPwNBH"
       );
-      console.log(result.text);
-      setStatus({ ok: true, msg: "✅ Your message has been sent. We’ll get back to you soon!" });
+      setStatus({ ok: true, msg: "✅ Your message has been sent successfully!" });
       formRef.current.reset();
     } catch (err) {
-      console.error(err);
-      setStatus({ ok: false, msg: "❌ Failed to send. Please try again in a moment." });
+      setStatus({ ok: false, msg: "❌ Failed to send message. Please try again." });
     } finally {
       setSending(false);
     }
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#11689B] via-[#0e5680] to-[#083b56] py-20">
+    <section className="relative py-20 bg-gradient-to-r from-white via-[#EFF7FF] to-[#D9EEFF]">
       <div className="container mx-auto px-6 lg:px-20">
+
         {/* Heading */}
-        <div className="text-center text-white mb-14">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Let's Connect</h2>
-          <p className="text-gray-200 max-w-2xl mx-auto text-lg">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#11689B] mb-3">
+            Let's Connect
+          </h2>
+          <p className="text-gray-700 max-w-2xl mx-auto text-lg">
             Whether you’re looking for property insights or want to discuss opportunities,
-            we’re here to help you every step of the way.
+            we are here to assist you.
           </p>
         </div>
 
-        {/* Main Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-          {/* Left Section - Info & Map */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 text-white shadow-xl border border-white/20 flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-white">Reach Us At</h3>
-              <ul className="space-y-5 text-gray-100">
-                <li className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="text-white text-xl mt-1" />
-                  <p>
-                    <strong>Office Address:</strong><br />
-                    MyBhumi Real Estate<br />
-                    Plot No. 25, Green Valley, Near IT Park,<br />
-                    Hyderabad, Telangana – 500081
-                  </p>
-                </li>
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-                <li className="flex items-center gap-3">
-                  <FaPhoneAlt className="text-white text-xl" />
-                  <a href="tel:+918123456789" className="text-white !no-underline">
-                    +91 81234 56789
-                  </a>
-                </li>
+          {/* LEFT CARD */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-200">
+            <h3 className="text-2xl font-semibold mb-6 text-[#11689B]">Reach Us At</h3>
 
-                <li className="flex items-center gap-3">
-                  <FaEnvelope className="text-white text-xl" />
-                  <a href="mailto:office@mybhumi.com" className="text-white !no-underline">
-                    office@mybhumi.com
-                  </a>
-                </li>
+            <ul className="space-y-5 text-gray-700">
+              <li className="flex gap-3">
+                <FaMapMarkerAlt className="text-[#11689B] text-xl mt-1" />
+                <p>
+                  <strong>Office Address</strong><br />
+                  MyBhumi Real Estate<br />
+                  Plot No. 25, Green Valley, Near IT Park,<br />
+                  Hyderabad, Telangana – 500081
+                </p>
+              </li>
 
-                <li className="flex items-center gap-3">
-                  <FaClock className="text-white text-xl" />
-                  <p>Mon–Sat: 9:00 AM – 6:00 PM<br />Sunday: Closed</p>
-                </li>
-              </ul>
-            </div>
+              <li className="flex items-center gap-3">
+                <FaPhoneAlt className="text-[#11689B] text-xl" />
+                <a href="tel:+918123456789" className="hover:text-[#11689B]">
+                  +91 81234 56789
+                </a>
+              </li>
 
-            {/* Map Embed */}
+              <li className="flex items-center gap-3">
+                <FaEnvelope className="text-[#11689B] text-xl" />
+                <a href="mailto:office@mybhumi.com" className="hover:text-[#11689B]">
+                  office@mybhumi.com
+                </a>
+              </li>
+
+              <li className="flex items-center gap-3">
+                <FaClock className="text-[#11689B] text-xl" />
+                <p>Mon–Sat: 9AM – 6PM<br />Sunday: Closed</p>
+              </li>
+            </ul>
+
+            {/* WORKING MAP */}
             <div className="mt-8">
               <iframe
                 title="MyBhumi Office Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.563094040912!2d78.3826!3d17.4385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93bf8d4e6d8d%3A0x72f693c3e6ed1f7!2sHitech%20City%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1687512345678"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.543080798609!2d78.37724677509444!3d17.439497602315335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93c95b07028d%3A0xba5a353a0d873d61!2sHITEC%20City%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1706611846954!5m2!1sen!2sin"
                 width="100%"
                 height="250"
-                allowFullScreen=""
+                allowFullScreen
                 loading="lazy"
-                className="rounded-xl border-2 border-white/40"
+                className="rounded-xl border border-[#11689B]/40 shadow-md"
               ></iframe>
             </div>
           </div>
 
-          {/* Right Section - Contact Form */}
-          <div className="bg-white rounded-3xl shadow-2xl p-10">
+          {/* RIGHT FORM */}
+          <div className="bg-white rounded-3xl shadow-lg p-10 border border-gray-200">
             <h3 className="text-3xl font-semibold text-[#11689B] mb-6">Send Us a Message</h3>
 
             <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
-              {/* Honeypot anti-spam (keep hidden & empty) */}
-              <input type="text" name="honeypot" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+
+              <input type="text" name="honeypot" style={{ display: "none" }} />
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label className="block font-medium mb-1">Full Name</label>
                 <input
-                  type="text"
                   name="from_name"
-                  placeholder="Enter your full name"
-                  className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#11689B]"
                   required
+                  className="w-full p-3 border rounded-md focus:ring-2 focus:ring-[#11689B]"
+                  placeholder="Enter your full name"
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block font-medium mb-1">Email</label>
                   <input
                     type="email"
                     name="from_email"
-                    placeholder="Enter your email"
-                    className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#11689B]"
                     required
+                    className="w-full p-3 border rounded-md focus:ring-2 focus:ring-[#11689B]"
+                    placeholder="Enter your email"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block font-medium mb-1">Phone</label>
                   <input
                     type="tel"
                     name="from_phone"
+                    className="w-full p-3 border rounded-md focus:ring-2 focus:ring-[#11689B]"
                     placeholder="Enter your phone number"
-                    className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#11689B]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <label className="block font-medium mb-1">Message</label>
                 <textarea
                   name="message"
-                  placeholder="Write your message..."
-                  rows="5"
-                  className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#11689B]"
                   required
-                />
+                  rows="5"
+                  className="w-full p-3 border rounded-md focus:ring-2 focus:ring-[#11689B]"
+                  placeholder="Write your message..."
+                ></textarea>
               </div>
 
               <button
-                type="submit"
                 disabled={sending}
-                className={`w-full py-3 rounded-md font-semibold text-lg shadow-md transition-all duration-200 text-white
-                  ${sending ? "bg-[#0f5c89]/70 cursor-not-allowed" : "bg-[#11689B] hover:bg-[#0f5c89]"}`}
+                className={`w-full py-3 rounded-md text-white font-semibold transition ${
+                  sending ? "bg-[#0f5c89]/60 cursor-not-allowed" : "bg-[#11689B] hover:bg-[#0f5c89]"
+                }`}
               >
                 {sending ? "Sending..." : "Send Message"}
               </button>
 
               {status.msg && (
-                <p className={`text-center mt-2 font-medium ${status.ok ? "text-green-600" : "text-red-600"}`}>
+                <p className={`text-center font-medium ${status.ok ? "text-green-600" : "text-red-600"}`}>
                   {status.msg}
                 </p>
               )}

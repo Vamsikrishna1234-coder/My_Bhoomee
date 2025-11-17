@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import woodenhouse from "../assets/images/wooden/wooden-villa.jpg";
 import wooden2 from "../assets/images/glassvilla/glass villa.jpg";
-import wooden3 from "../assets/images/manduva/manduva villa.jpg";
-import wooden4 from "../assets/images/bali/baliimg3.png";
+import wooden3 from "../assets/images/glassvilla/glass villa2.jpg";
+import wooden4 from "../assets/images/wooden/wooden-villa1.jpg";
 
 const OnyxIntro = () => {
   const images = [woodenhouse, wooden2, wooden3, wooden4];
@@ -41,9 +41,6 @@ const OnyxIntro = () => {
           }}
         ></div>
       ))}
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80"></div>
 
       {/* Floating Particles (subtle visual effect) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

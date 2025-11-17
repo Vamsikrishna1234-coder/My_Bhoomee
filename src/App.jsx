@@ -5,7 +5,6 @@ import './App.css'
 import ScrollToTop from './components/ScrollToTop.jsx';
 import Header from './components/Header.jsx';
 import SocialBar from './components/SocialMediabar.jsx';
-import DownloadBrochure from './components/Brochure.jsx';
 import Footer from './components/Footer.jsx';
 import ChatAssistant from "./components/ChatAssistant";
 import SiteVisit from './components/SiteVisit.jsx';
@@ -30,7 +29,7 @@ function App() {
            
           <SocialBar/>
 
-          <DownloadBrochure/>
+          
           
             <Routes>
               <Route path="/" element={<Home />} />

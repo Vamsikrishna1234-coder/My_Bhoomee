@@ -1,127 +1,111 @@
-import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
-import homeanimation from '../assets/videos/home animation.mp4';
+import React from "react";
+import villa1 from "../assets/images/wooden/wooden-villa.jpg";
+import villa2 from "../assets/images/glassvilla/glass villa2.jpg";
+import { useNavigate } from "react-router-dom";
 
-export default function AboutSection() {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  const contentRefs = useRef([]);
+export default function AboutStorySection() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (containerRef.current) {
-        gsap.fromTo(
-          containerRef.current,
-          { scale: 0.8 },
-          { opacity: 1, scale: 1, duration: 1, delay: 0.3, ease: 'back.out(1.7)' }
-        );
-      }
-
-      if (videoRef.current) {
-        gsap.to(videoRef.current, {
-          y: -25,
-          duration: 2,
-          ease: 'power1.inOut',
-          repeat: -1,
-          yoyo: true,
-        });
-      }
-
-      const textElements = contentRefs.current.filter(el => el);
-      gsap.fromTo(
-        textElements,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 1, stagger: 0.2, ease: 'power3.out' }
-      );
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      gsap.killTweensOf([videoRef.current, containerRef.current, ...contentRefs.current]);
-    };
-  }, []);
-
-  const addToRefs = (el) => {
-    if (el && !contentRefs.current.includes(el)) {
-      contentRefs.current.push(el);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#e6f0f7] via-white to-[#d1e4f0] py-16 px-4 sm:py-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
-          
-          {/* Left Side - Content */}
-          <div className="space-y-6">
-            <div ref={addToRefs} className="inline-block">
-              <h2 
-                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2"
-                style={{
-                  background: 'linear-gradient(to right, #11689B, #0e5a87)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                About Us
-              </h2>
-              <div 
-                className="h-1 w-32 rounded-full"
-                style={{ background: 'linear-gradient(to right, #11689B, #0e5a87)' }}
-              />
-            </div>
+    <section className="relative py-20 px-6 bg-gradient-to-br from-[#e9f4fa] via-white to-[#d9e9f3] overflow-hidden">
+
+      {/* Background Soft Shapes */}
+      <div className="absolute top-10 left-0 w-72 h-72 bg-[#11689B]/15 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#0e5a87]/20 rounded-full blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center relative z-10">
+
+        {/* LEFT IMAGES SECTION */}
+        <div className="relative flex items-center justify-center">
+
+          {/* DESKTOP + TABLET FLOAT IMAGES (md and up) */}
+          <div className="hidden md:block w-full h-[600px] relative">
             
-            {/* JUSTIFIED TEXT - NO GAPS */}
-            <div ref={addToRefs} className="space-y-4 text-gray-700 text-base sm:text-lg leading-snug sm:leading-relaxed">
-              <p className="text-justify hyphens-auto break-words">
-                Welcome to <span className="font-semibold" style={{ color: '#11689B' }}>MyBhumi</span>, your trusted partner in the real estate journey. We are dedicated to transforming the way people buy, sell, and invest in properties across the nation.
-              </p>
-              
-              <p className="text-justify hyphens-auto break-words">
-                With years of expertise and a deep understanding of the market, we provide comprehensive solutions tailored to your unique needs. Our team of seasoned professionals is committed to delivering excellence in every transaction.
-              </p>
-              
-              <p className="text-justify hyphens-auto break-words">
-                At MyBhumi, we believe that finding the perfect property should be an exciting and seamless experience. We leverage cutting-edge technology and local market insights to connect you with opportunities that align with your dreams and aspirations.
-              </p>
+            {/* Main Floating */}
+            <div className="absolute left-4 md:left-6 w-[78%] h-[78%] rounded-3xl overflow-hidden shadow-2xl animate-softFloat z-20">
+              <img src={villa1} className="w-full h-full object-cover" />
             </div>
-            
-            <div ref={addToRefs} className="flex gap-4 pt-4">
-              <button 
-                onClick={() => navigate('/aboutus')}
-                className="px-6 sm:px-8 py-3 text-white rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
-                style={{ background: 'linear-gradient(to right, #11689B, #0e5a87)' }}
-              >
-                Learn More
-              </button>
+
+            {/* Second Floating */}
+            <div className="absolute right-2 bottom-4 w-[55%] h-[55%] rounded-3xl overflow-hidden shadow-xl animate-softFloatReverse z-30">
+              <img src={villa2} className="w-full h-full object-cover" />
             </div>
           </div>
 
-          {/* Right Side - Video */}
-          <div ref={containerRef} className="relative flex justify-center items-center mt-8 md:mt-0">
-            <div
-              ref={videoRef}
-              className="w-full max-w-md sm:max-w-xl md:max-w-2xl h-[400px] sm:h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl scale-105 md:scale-110 lg:scale-125 transition-transform duration-500"
-            >
-              <video
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-              >
-                <source src={homeanimation} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
+          {/* MOBILE CARD VIEW ONLY (sm and below) */}
+          <div className="flex flex-col gap-6 w-full md:hidden">
 
+            <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+              <img src={villa1} className="w-full h-64 object-cover" />
+            </div>
+
+            <div className="w-full rounded-2xl overflow-hidden shadow-lg">
+              <img src={villa2} className="w-full h-64 object-cover" />
+            </div>
+
+          </div>
         </div>
+
+        {/* RIGHT CONTENT */}
+        <div>
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{
+              background: "linear-gradient(to right, #11689B, #0e5a87)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Our Journey
+          </h2>
+
+          <p className="text-gray-700 text-lg leading-relaxed mb-8 text-justify hyphens-auto">
+            MyBhumi began with a dream to transform luxury living in Hyderabad’s 
+            green heart. We craft homes that breathe — where modern design meets 
+            nature’s embrace. Nestled in Moinabad’s peaceful surroundings, our villa 
+            communities offer privacy, greenery, and architectural excellence. 
+            Every villa is built using premium materials, intelligent planning, 
+            and smart automation to ensure long-term durability and modern comfort. 
+            With over 12 world-class amenities, landscaped gardens, and RERA-compliant 
+            development, MyBhumi stands for trust, transparency, and quality.  
+            We don’t just create homes — we create spaces where families grow, 
+            memories are celebrated, and lifestyles are elevated.
+          </p>
+
+          {/* BUTTONS */}
+          <div className="flex gap-6 flex-wrap">
+            <button
+              onClick={() => navigate("/aboutus")}
+              className="px-8 py-3 bg-[#11689B] text-white rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              Explore Our Story
+            </button>
+
+            <button className="px-8 py-3 border-2 border-[#11689B] text-[#11689B] rounded-full hover:bg-[#11689B] hover:text-white transition-all duration-300">
+              Download Brochure
+            </button>
+          </div>
+        </div>
+
       </div>
-    </div>
+
+      {/* Animations */}
+      <style>
+        {`
+          @keyframes softFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
+            100% { transform: translateY(0px); }
+          }
+          @keyframes softFloatReverse {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(18px); }
+            100% { transform: translateY(0px); }
+          }
+          .animate-softFloat { animation: softFloat 5s ease-in-out infinite; }
+          .animate-softFloatReverse { animation: softFloatReverse 5s ease-in-out infinite; }
+        `}
+      </style>
+    </section>
   );
 }

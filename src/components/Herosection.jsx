@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import home1 from "../assets/images/wooden/wooden-villa.jpg";
 import home2 from "../assets/images/glassvilla/glass villa2.jpg";
-import home3 from "../assets/images/manduva/kerala manduva4.jpg";
-import home4 from "../assets/images/wooden/wooden garden.jpg";
-import Preloader from "./Preloader";
+import home3 from "../assets/images/bali/baliimg2.jpg";
 
 const slides = [
   {
@@ -11,120 +9,106 @@ const slides = [
   },
   {
     image: home2,
-    caption: "Invest in Real Estate — Because Every Square Foot Matters",
+    caption: "Build the Future You Deserve",
+    subtitle: "Quality construction with world-class amenities",
   },
   {
     image: home3,
+    caption: "Your Dream Home Awaits",
+    subtitle: "Hyderabad’s most trusted real-estate developers",
   },
   {
-    image: home4,
-    caption: "Build the Future You Deserve",
+    image: home1,
+    caption: "Luxury Living Redefined",
+    subtitle: "Experience comfort, convenience & premium lifestyle",
   },
 ];
 
 const HeroSection = () => {
-  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
+  const [curtainOpen, setCurtainOpen] = useState(false);
 
-  // ✅ Preload images
+  // Curtain animation on load
   useEffect(() => {
-    const loadImages = async () => {
-      const promises = slides.map(
-        (slide) =>
-          new Promise((resolve) => {
-            const img = new Image();
-            img.src = slide.image;
-            img.onload = resolve;
-            img.onerror = resolve;
-          })
-      );
-      await Promise.all(promises);
-      setTimeout(() => setLoading(false), 600);
-    };
-    loadImages();
+    setTimeout(() => setCurtainOpen(true), 300);
   }, []);
 
-  // ✅ Auto-scroll
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
 
-  const handleNext = () => setCurrent((prev) => (prev + 1) % slides.length);
-  const handlePrev = () =>
+  const prevSlide = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-[calc(100vh-80px)] bg-black">
-        <Preloader />
-      </div>
-    );
-  }
+  };
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] overflow-hidden bg-black mt-[80px]">
-      {/* Slider */}
-      <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}
-      >
-        {slides.map((slide, index) => (
-          <div key={index} className="flex-shrink-0 w-full h-[calc(100vh-80px)] relative">
-            <img
-              src={slide.image}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
-              <h1 className="text-white text-3xl sm:text-5xl font-bold px-4 max-w-3xl animate-fadeIn">
-                {slide.caption}
-              </h1>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="relative w-full h-[90vh] md:h-screen overflow-hidden bg-black">
 
-      {/* Prev & Next Buttons */}
-      <button
-        onClick={handlePrev}
-        className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition"
-      >
-        ❮
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition"
-      >
-        ❯
-      </button>
+      {/* Slides */}
+      {slides.map((slide, index) => {
+        const isActive = index === current;
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
-        {slides.map((_, index) => (
+        return (
           <div
             key={index}
-            onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-              current === index ? "bg-white scale-110" : "bg-gray-500"
+            className={`absolute inset-0 transition-opacity duration-[800ms] ${
+              isActive ? "opacity-100" : "opacity-0"
             }`}
-          ></div>
-        ))}
+          >
+            <img
+              src={slide.image}
+              className="w-full h-full object-cover"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/0"></div>
+
+            {/* Caption */}
+            {isActive && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-20">
+                <h1 className="text-white text-4xl sm:text-6xl font-bold mb-4 drop-shadow-lg">
+                  {slide.caption}
+                </h1>
+
+                <p className="text-gray-200 text-lg sm:text-2xl mb-6 tracking-wide">
+                  {slide.subtitle}
+                </p>
+
+                
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* PREV / NEXT BUTTONS - Bottom Right */}
+      <div className="absolute bottom-6 right-6 flex gap-3 z-30">
+        <button
+          onClick={prevSlide}
+          className="px-7 py-2 bg-white/90 text-black font-semibold rounded-lg shadow hover:bg-white transition"
+        >
+          Prev
+        </button>
+        <button
+          onClick={nextSlide}
+          className="px-4 py-2 bg-white/90 text-black font-semibold rounded-lg shadow hover:bg-white transition"
+        >
+          Next
+        </button>
       </div>
 
-      {/* Smooth fade animation */}
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1s ease-in-out;
-        }
-      `}</style>
-    </section>
+      {/* Curtain Animation */}
+      <div
+        className={`absolute inset-0 bg-black z-40 transition-transform duration-[2000ms] ${
+          curtainOpen ? "translate-y-full" : ""
+        }`}
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-5xl font-bold">
+          Welcome To MyBhoomee
+        </div>
+      </div>
+
+    </div>
   );
 };
 

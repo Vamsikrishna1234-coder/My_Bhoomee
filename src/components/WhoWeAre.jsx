@@ -52,7 +52,7 @@ const WhoWeAre = () => {
             <img
               src={founderImg}
               alt="Founder - Mr. Rajesh Kumar"
-              className="w-[550px] max-w-full h-[350px] object-cover rounded-2xl"
+              className="w-[590px] max-w-full h-[350px] object-cover rounded-2xl"
             />
           </div>
 

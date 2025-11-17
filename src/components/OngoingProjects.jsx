@@ -1,92 +1,111 @@
 import React from "react";
-import WoodenVilla from "../assets/images/wooden/wooden-villa.jpg";
+import villa1 from "../assets/images/wooden/wooden-villa.jpg";
+import villa2 from "../assets/images/wooden/wooden-villa1.jpg";
+import villa3 from "../assets/images/glassvilla/glass villa1.png";
+import { MapPin } from "lucide-react";
+
+const projectData = [
+  {
+    title: "ONYX (A life closer to nature)",
+    size: "180 Sqyd",
+    buildup: "2400 Sft",
+    type: "3BHK",
+    price: "1.85 Cr*",
+    location: "Moinabad, Hyderabad",
+    image: villa1,
+  },
+  {
+    title: "ONYX European Wooden villas ",
+    size: "160 Sqyd",
+    buildup: "2100 Sft",
+    type: "3BHK",
+    price: "1.55 Cr*",
+    location: "Moinabad, Hyderabad",
+    image: villa2,
+  },
+  {
+    title: "ONYX glass Villas",
+    size: "200 Sqyd",
+    buildup: "2600 Sft",
+    type: "4BHK",
+    price: "2.25 Cr*",
+    location: "Moinabad, Hyderabad",
+    image: villa3,
+  }
+];
 
 const OngoingProjects = () => {
-  const handleProjectClick = () => {
-    window.location.href = "/projects";
-  };
+  const handleProjectClick = () => window.location.href = "/projects";
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Heading */}
-        <div className="text-center mb-8 md:mb-12">
-          <span className="inline-block text-xm font-bold text-[#11689B] tracking-[0.3em] uppercase mb-3">
-            Projects
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-left mb-12">
+          <span className="text-[#11689B] font-semibold tracking-widest uppercase text-sm">
+            Featured Projects
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#11689B]">
-            Ongoing Project
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-1">
+            Ongoing Developments
           </h2>
         </div>
 
-        {/* Combined Project Card */}
-        <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
-          {/* Image Section */}
-          <div className="relative h-64 sm:h-80 md:h-[400px] w-full">
-            <img
-              src={WoodenVilla}
-              alt="ONYX Project"
-              className="w-full h-full object-cover"
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
-            {/* Badge */}
-            <div className="absolute top-6 right-6 bg-[#11689B] text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-              In Progress
-            </div>
-          </div>
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projectData.map((item, index) => (
+            <div
+              key={index}
+              className="cursor-pointer shadow-xl bg-white"
+              onClick={handleProjectClick}
+            >
+              {/* Top Image */}
+              <div className="w-full h-[260px] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+              </div>
 
-          {/* Text Section */}
-          <div className="bg-white p-8 md:p-10">
-            <div className="grid md:grid-cols-3 gap-6 items-center">
-              {/* Project Title */}
-              <div className="md:col-span-1">
-                <h3 className="text-3xl md:text-4xl font-bold text-[#11689B] mb-1">
-                  ONYX
-                </h3>
-                <p className="text-[#11689B] font-medium text-sm md:text-base italic">
-                  A Life Closer to Nature
+              {/* Title + Location */}
+              <div className="p-4 pb-1">
+                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="text-gray-600 flex items-center gap-1 text-sm mt-1">
+                  <MapPin size={15} /> {item.location}
                 </p>
               </div>
 
-              {/* Description */}
-              <div className="md:col-span-1 md:border-l md:border-r border-gray-200 md:px-6">
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                  Modern luxury meets natural serenity in this thoughtfully
-                  designed community surrounded by lush greenery.
-                </p>
+              {/* Detail Info Row */}
+              <div className="border-t border-gray-200 px-4 py-3 grid grid-cols-4 text-center text-sm text-gray-700 font-medium">
+                <div>
+                  <p className="text-xs text-gray-500">Size</p>
+                  <p>{item.size}</p>
+                </div>
+                <div className="border-l border-gray-200">
+                  <p className="text-xs text-gray-500">Buildup</p>
+                  <p>{item.buildup}</p>
+                </div>
+                <div className="border-l border-gray-200">
+                  <p className="text-xs text-gray-500">Type</p>
+                  <p>{item.type}</p>
+                </div>
+                <div className="border-l border-gray-200">
+                  <p className="text-xs text-gray-500">Price</p>
+                  <p className="text-[#11689B] font-bold">{item.price}</p>
+                </div>
               </div>
 
               {/* CTA Button */}
-              <div className="md:col-span-1 flex justify-start md:justify-end">
-                <button
-                  onClick={handleProjectClick}
-                  className="group relative inline-flex items-center justify-center px-8 py-3 bg-[#11689B] text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-[#0e557f] hover:shadow-lg hover:scale-105"
-                >
-                  <span className="relative z-10 flex items-center space-x-2">
-                    <span>View Project</span>
-                    <svg
-                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 5l7 7-7 7"
-                      ></path>
-                    </svg>
-                  </span>
-                </button>
-              </div>
+              <div className="flex justify-end px-5 py-4">
+              <button className="px-6 py-2 border border-[#11689B] rounded-full text-sm font-semibold text-[#11689B] hover:bg-[#11689B] hover:text-white transition-all duration-300">
+                View Project
+              </button>
             </div>
-
-            {/* Features Row */}
-            
-          </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
