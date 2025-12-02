@@ -6,7 +6,7 @@ const GoldenInvestmentBanner = () => {
     <section
       className="relative h-[90vh] flex items-center justify-center text-center text-white overflow-hidden bg-fixed bg-center bg-cover"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(43, 42, 42, 0.81), rgba(49, 48, 48, 0.77)), url(${bannerImg})`,
+        backgroundImage: `url(${bannerImg})`,
       }}
     >
       {/* Decorative Golden Glows */}

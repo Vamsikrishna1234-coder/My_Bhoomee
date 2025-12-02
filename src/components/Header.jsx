@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo mybhumee.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [desktopScrolled, setDesktopScrolled] = useState(false);
   const location = useLocation();
   const navRef = useRef(null);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
@@ -18,26 +17,9 @@ const Header = () => {
     { label: "Contact Us", to: "/contact" },
   ];
 
-  const activeIndex = navItems.findIndex(item => item.to === location.pathname);
-
-  // Scroll only applies on desktop
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth >= 1024) {
-        setDesktopScrolled(window.scrollY > 80);
-      } else {
-        setDesktopScrolled(true); // mobile always white
-      }
-    };
-
-    handleScroll(); 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
+  const activeIndex = navItems.findIndex(
+    (item) => item.to === location.pathname
+  );
 
   // Underline animation
   useEffect(() => {
@@ -47,7 +29,8 @@ const Header = () => {
         return;
       }
       const navRect = navRef.current.getBoundingClientRect();
-      const linkRect = navRef.current.children[activeIndex].getBoundingClientRect();
+      const linkRect =
+        navRef.current.children[activeIndex].getBoundingClientRect();
       setUnderlineStyle({
         width: linkRect.width,
         left: linkRect.left - navRect.left,
@@ -62,30 +45,29 @@ const Header = () => {
   return (
     <header
       className={`
-        fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${desktopScrolled ? "bg-white shadow-md" : "bg-transparent"}
-        lg:${desktopScrolled ? "bg-white shadow-md" : "bg-transparent"}
+        fixed top-0 left-0 w-full z-50
+        bg-white shadow-md transition-all duration-300
       `}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          
           {/* Logo */}
           <Link to="/">
             <img src={logo} alt="MyBhumi Logo" className="h-14 lg:h-[72px]" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav ref={navRef} className="hidden lg:flex items-center space-x-8 relative">
+          <nav
+            ref={navRef}
+            className="hidden lg:flex items-center space-x-8 relative"
+          >
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`font-semibold text-[17px] transition !no-underline ${
-                  desktopScrolled
-                    ? "!text-[#11689B] hover:text-[#0d5275]"
-                    : "text-white hover:text-gray-200"
-                }`}
+                className={`font-semibold text-[17px] transition !no-underline
+                  !text-[#11689B] hover:text-[#0d5275]
+                `}
               >
                 {item.label}
               </Link>
@@ -93,19 +75,21 @@ const Header = () => {
 
             {/* Underline */}
             <span
-              className={`absolute bottom-0 h-[2px] rounded-full transition-all duration-300 ${
-                desktopScrolled ? "bg-[#11689B]" : "bg-white"
-              }`}
-              style={{ left: underlineStyle.left, width: underlineStyle.width, opacity: activeIndex !== -1 ? 1 : 0 }}
+              className={`absolute bottom-0 h-[2px] rounded-full transition-all duration-300 bg-[#11689B]`}
+              style={{
+                left: underlineStyle.left,
+                width: underlineStyle.width,
+                opacity: activeIndex !== -1 ? 1 : 0,
+              }}
             />
 
             {/* Enquiry Button */}
             <Link
               to="/contact"
-              className={`
+              className="
                 ml-4 px-4 py-2 font-semibold rounded-full shadow-md transition !no-underline
-                ${desktopScrolled ? "bg-[#11689B] text-white" : "bg-white text-black"}
-              `}
+                bg-[#11689B] text-white
+              "
             >
               Enquiry Now
             </Link>

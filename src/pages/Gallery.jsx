@@ -75,7 +75,7 @@ const Gallery = () => {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-[#F8F2E9]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

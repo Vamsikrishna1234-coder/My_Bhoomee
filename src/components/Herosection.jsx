@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import home1 from "../assets/images/wooden/wooden-villa.jpg";
+import home1 from "../assets/images/banner1.jpg";
 import home2 from "../assets/images/glassvilla/glass villa2.jpg";
-import home3 from "../assets/images/bali/baliimg2.jpg";
+import home3 from "../assets/images/wooden/wooden interior.jpg";
+import home4 from "../assets/images/wooden/wooden pool.jpg";
 
 const slides = [
   {
@@ -18,7 +19,7 @@ const slides = [
     subtitle: "Hyderabad’s most trusted real-estate developers",
   },
   {
-    image: home1,
+    image: home4,
     caption: "Luxury Living Redefined",
     subtitle: "Experience comfort, convenience & premium lifestyle",
   },
@@ -42,7 +43,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative w-full h-[90vh] md:h-screen overflow-hidden bg-black">
+    <div className="relative w-full min-h-[90vh] md:min-h-screen bg-black overflow-hidden">
 
       {/* Slides */}
       {slides.map((slide, index) => {

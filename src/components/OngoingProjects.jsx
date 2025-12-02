@@ -1,114 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import villa1 from "../assets/images/wooden/wooden-villa.jpg";
-import villa2 from "../assets/images/wooden/wooden-villa1.jpg";
-import villa3 from "../assets/images/glassvilla/glass villa1.png";
 import { MapPin } from "lucide-react";
 
-const projectData = [
-  {
-    title: "ONYX (A life closer to nature)",
-    size: "180 Sqyd",
-    buildup: "2400 Sft",
-    type: "3BHK",
-    price: "1.85 Cr*",
-    location: "Moinabad, Hyderabad",
-    image: villa1,
-  },
-  {
-    title: "ONYX European Wooden villas ",
-    size: "160 Sqyd",
-    buildup: "2100 Sft",
-    type: "3BHK",
-    price: "1.55 Cr*",
-    location: "Moinabad, Hyderabad",
-    image: villa2,
-  },
-  {
-    title: "ONYX glass Villas",
-    size: "200 Sqyd",
-    buildup: "2600 Sft",
-    type: "4BHK",
-    price: "2.25 Cr*",
-    location: "Moinabad, Hyderabad",
-    image: villa3,
-  }
-];
+const OngoingProject = () => {
+  const [reveal, setReveal] = useState(false);
+  const [hover, setHover] = useState(false);
 
-const OngoingProjects = () => {
-  const handleProjectClick = () => window.location.href = "/projects";
+  useEffect(() => {
+    setTimeout(() => setReveal(true), 300);
+  }, []);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-20 bg-[#F8F2E9]">
 
-        {/* Heading */}
-        <div className="text-left mb-12">
-          <span className="text-[#11689B] font-semibold tracking-widest uppercase text-sm">
-            Featured Projects
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-1">
-            Ongoing Developments
-          </h2>
-        </div>
+      {/* HEADING */}
+      <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
+        <span className="text-[#11689B] uppercase text-sm font-semibold tracking-widest">
+          Ongoing Project
+        </span>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projectData.map((item, index) => (
-            <div
-              key={index}
-              className="cursor-pointer shadow-xl bg-white"
-              onClick={handleProjectClick}
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
+          ONYX Luxury Villas – MyBhoomee
+        </h2>
+
+        <div className="w-20 h-1 bg-[#11689B] mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      {/* FULL WIDTH IMAGE WITH OVERLAY BUTTON */}
+      <div className="px-2.5"> {/* 10px left & right padding */}
+        <div
+          className="relative w-full h-[580px]  overflow-hidden shadow-2xl"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          {/* IMAGE */}
+          <img
+            src={villa1}
+            alt="ONYX Villas"
+            className="w-full h-full object-cover"
+          />
+
+          {/* CURTAIN REVEAL ANIMATION */}
+          <div
+            className={`absolute inset-0 bg-white transition-transform duration-[1400ms] ease-out ${
+              reveal ? "translate-y-full" : ""
+            }`}
+          ></div>
+
+          {/* BLACK OVERLAY ON HOVER */}
+          <div
+            className={`absolute inset-0 bg-black/40 transition-all duration-500 ${
+              hover ? "opacity-100" : "opacity-0"
+            }`}
+          ></div>
+
+          {/* VIEW PROJECT BUTTON ON HOVER */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
+              hover ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            }`}
+          >
+            <button
+              onClick={() => (window.location.href = "/projects")}
+              className="px-8 py-3 bg-white text-[#11689B] font-semibold rounded-full shadow-lg hover:bg-[#11689B] hover:text-[#11689B] transition-all duration-300"
             >
-              {/* Top Image */}
-              <div className="w-full h-[260px] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                />
-              </div>
-
-              {/* Title + Location */}
-              <div className="p-4 pb-1">
-                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 flex items-center gap-1 text-sm mt-1">
-                  <MapPin size={15} /> {item.location}
-                </p>
-              </div>
-
-              {/* Detail Info Row */}
-              <div className="border-t border-gray-200 px-4 py-3 grid grid-cols-4 text-center text-sm text-gray-700 font-medium">
-                <div>
-                  <p className="text-xs text-gray-500">Size</p>
-                  <p>{item.size}</p>
-                </div>
-                <div className="border-l border-gray-200">
-                  <p className="text-xs text-gray-500">Buildup</p>
-                  <p>{item.buildup}</p>
-                </div>
-                <div className="border-l border-gray-200">
-                  <p className="text-xs text-gray-500">Type</p>
-                  <p>{item.type}</p>
-                </div>
-                <div className="border-l border-gray-200">
-                  <p className="text-xs text-gray-500">Price</p>
-                  <p className="text-[#11689B] font-bold">{item.price}</p>
-                </div>
-              </div>
-
-              {/* CTA Button */}
-              <div className="flex justify-end px-5 py-4">
-              <button className="px-6 py-2 border border-[#11689B] rounded-full text-sm font-semibold text-[#11689B] hover:bg-[#11689B] hover:text-white transition-all duration-300">
-                View Project
-              </button>
-            </div>
-            </div>
-          ))}
+              View Project
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* DESCRIPTION BELOW IMAGE (same width as image) */}
+      <div className="px-2.5 max-w-9xl mx-auto mt-6">
+
+        {/* Location */}
+        <p className="flex items-center gap-2 text-[#11689B] text-sm">
+          <MapPin size={18} className="text-[#11689B]" />
+          Moinabad, Hyderabad
+        </p>
+
+        {/* Description */}
+        <p className="text-gray-700 text-lg mt-4 leading-relaxed max-w-10xl">
+          ONYX Villas bring a beautiful balance between elegant architecture and
+          peaceful green surroundings. Designed for premium lifestyle seekers,
+          these villas offer spacious interiors, modern aesthetics, and a serene
+          environment that elevates everyday living.
+        </p>
+
+        <div className="flex justify-center">
+        <button
+          onClick={() => (window.location.href = "/projects")}
+          className="mt-6 px-6 py-2 bg-[#11689B] text-white font-semibold rounded-full shadow-lg hover:bg-[#0e4e70] transition-all duration-300 text-center"
+        >
+          Explore Project
+        </button>
+      </div>
 
       </div>
+
     </section>
   );
 };
 
-export default OngoingProjects;
+export default OngoingProject;

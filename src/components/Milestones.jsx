@@ -41,7 +41,7 @@ export default function Milestones() {
   }, []);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#F8F2E9]">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}

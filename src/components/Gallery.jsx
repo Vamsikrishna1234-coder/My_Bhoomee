@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import Wooden1 from "../assets/images/wooden/wooden natural .jpg";
 import Wooden3 from "../assets/images/wooden/wooden garden.jpg";
 import Kerala2 from "../assets/images/manduva/kerala manduva2.jpg";
@@ -12,16 +13,19 @@ const galleryImages = [Wooden1, Wooden3, Kerala2, Kerala3, Glass2, Glass3];
 const GallerySection = () => {
   const sliderRef = useRef(null);
   const isDesktop = window.innerWidth >= 1024;
-  const cardWidthDesktop = 400;
-  const cardGap = 23;
 
-  // --- Auto Scroll Only For Desktop ---
+  // NEW WIDTH + HEIGHT
+  const cardWidthDesktop = 650; // wider images
+  const cardGap = 20;
+  const cardHeightDesktop = 400; // shorter height
+
+  // Auto Scroll for Desktop
   useEffect(() => {
     if (!isDesktop) return;
 
     const interval = setInterval(() => {
       handleNext();
-    }, 1800);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -47,7 +51,7 @@ const GallerySection = () => {
       slider.scrollLeft += slider.clientWidth;
     }
 
-    // Restart loop for desktop only
+    // Loop back
     setTimeout(() => {
       if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
         slider.style.scrollBehavior = "auto";
@@ -57,7 +61,7 @@ const GallerySection = () => {
   };
 
   return (
-    <section className="py-12 bg-[#E9F3F9]">
+    <section className="py-12 bg-[#F8F2E9]">
       <div className="relative w-full overflow-hidden">
 
         {/* Title */}
@@ -68,7 +72,9 @@ const GallerySection = () => {
         {/* Left Button */}
         <button
           onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center rounded-full z-20"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] 
+          hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center 
+          rounded-full z-20"
         >
           <ChevronLeft size={22} />
         </button>
@@ -86,15 +92,20 @@ const GallerySection = () => {
           {[...galleryImages, ...galleryImages].map((img, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 cursor-pointer"
+              className="flex-shrink-0 cursor-pointer  overflow-hidden"
               style={{
                 width: isDesktop ? `${cardWidthDesktop}px` : "100vw",
-                height: isDesktop ? "480px" : "340px",
+                height: isDesktop ? `${cardHeightDesktop}px` : "320px",
               }}
               onClick={() =>
-                (window.location.href = `/gallery?project=${(idx % galleryImages.length) + 1}`)}
+                (window.location.href = `/gallery?project=${(idx % galleryImages.length) + 1}`)
+              }
             >
-              <img src={img} className="w-full h-full object-cover" alt="" />
+              <img
+                src={img}
+                className="w-full h-full object-cover "
+                alt=""
+              />
             </div>
           ))}
         </div>
@@ -102,12 +113,15 @@ const GallerySection = () => {
         {/* Right Button */}
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center rounded-full z-20"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] 
+          hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center 
+          rounded-full z-20"
         >
           <ChevronRight size={22} />
         </button>
       </div>
 
+      {/* Hide scrollbars */}
       <style>{`::-webkit-scrollbar{display:none;}`}</style>
     </section>
   );

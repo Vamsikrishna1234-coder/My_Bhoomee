@@ -1,109 +1,104 @@
-import React from "react";
-import villa1 from "../assets/images/wooden/wooden-villa.jpg";
-import villa2 from "../assets/images/glassvilla/glass villa2.jpg";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import img1 from "../assets/images/wooden/wooden-villa.jpg";
+import img2 from "../assets/images/glassvilla/glass villa2.jpg";
+import img3 from "../assets/images/bali/baliimg2.jpg";
 
-export default function AboutStorySection() {
-  const navigate = useNavigate();
+export default function AboutCircleSection() {
+  const images = [img1, img2, img3];
+  const [current, setCurrent] = useState(0);
+
+  // Auto change image every 2 sec
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-br from-[#e9f4fa] via-white to-[#d9e9f3] overflow-hidden">
+    <section className="bg-[#F8F2E9] py-20 px-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
-      {/* Background Soft Shapes */}
-      <div className="absolute top-10 left-0 w-72 h-72 bg-[#11689B]/15 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#0e5a87]/20 rounded-full blur-3xl"></div>
-
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center relative z-10">
-
-        {/* LEFT IMAGES SECTION */}
+        {/* LEFT SIDE - CIRCLE WITH ROTATING TEXT */}
         <div className="relative flex items-center justify-center">
 
-          {/* DESKTOP + TABLET FLOAT IMAGES (md and up) */}
-          <div className="hidden md:block w-full h-[600px] relative">
-            
-            {/* Main Floating */}
-            <div className="absolute left-4 md:left-6 w-[78%] h-[78%] rounded-3xl overflow-hidden shadow-2xl animate-softFloat z-20">
-              <img src={villa1} className="w-full h-full object-cover" />
-            </div>
+          {/* Circular Text */}
+          <div className="absolute w-[420px] h-[420px] md:w-[500px] md:h-[500px] animate-spin-slow">
+            <svg
+              viewBox="0 0 300 300"
+              className="w-full h-full"
+            >
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M 150, 150
+                     m -120, 0
+                     a 120,120 0 1,1 240,0
+                     a 120,120 0 1,1 -240,0"
+                />
+              </defs>
 
-            {/* Second Floating */}
-            <div className="absolute right-2 bottom-4 w-[55%] h-[55%] rounded-3xl overflow-hidden shadow-xl animate-softFloatReverse z-30">
-              <img src={villa2} className="w-full h-full object-cover" />
-            </div>
+              <text fill="#11689B" fontSize="18" fontWeight="600">
+                <textPath href="#circlePath" startOffset="0%">
+                  My Bhoomee • MyBhoomee • MyBhoomee • MyBhoomee • MyBhoomee • MyBhoomee •MyBhoomee •
+                </textPath>
+              </text>
+            </svg>
           </div>
 
-          {/* MOBILE CARD VIEW ONLY (sm and below) */}
-          <div className="flex flex-col gap-6 w-full md:hidden">
-
-            <div className="w-full rounded-2xl overflow-hidden shadow-lg">
-              <img src={villa1} className="w-full h-64 object-cover" />
-            </div>
-
-            <div className="w-full rounded-2xl overflow-hidden shadow-lg">
-              <img src={villa2} className="w-full h-64 object-cover" />
-            </div>
-
+          {/* Main Circle Image */}
+          <div className="w-[300px] h-[300px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden shadow-2xl relative z-10">
+            <img
+              src={images[current]}
+              className="w-full h-full object-cover"
+            />
           </div>
+
         </div>
 
-        {/* RIGHT CONTENT */}
+        {/* RIGHT SIDE CONTENT */}
         <div>
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            style={{
-              background: "linear-gradient(to right, #11689B, #0e5a87)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Our Journey
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
+            Premium Villas in Hyderabad Designed for Modern Lifestyle
           </h2>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-8 text-justify hyphens-auto">
-            MyBhumi began with a dream to transform luxury living in Hyderabad’s 
-            green heart. We craft homes that breathe — where modern design meets 
-            nature’s embrace. Nestled in Moinabad’s peaceful surroundings, our villa 
-            communities offer privacy, greenery, and architectural excellence. 
-            Every villa is built using premium materials, intelligent planning, 
-            and smart automation to ensure long-term durability and modern comfort. 
-            With over 12 world-class amenities, landscaped gardens, and RERA-compliant 
-            development, MyBhumi stands for trust, transparency, and quality.  
-            We don’t just create homes — we create spaces where families grow, 
-            memories are celebrated, and lifestyles are elevated.
+          <p className="text-gray-700 text-lg leading-relaxed mt-6">
+            MyBhoomee redefines luxury villa living with a harmonious blend of 
+            contemporary design, lush landscapes, and world-class construction 
+            standards. Every villa is built to deliver unmatched comfort, privacy, 
+            and long-term value.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed mt-4">
+            Nestled in the tranquil surroundings of Moinabad, MyBhoomee offers 
+            effortless access to Hyderabad while keeping you close to nature — 
+            making it one of the most sought-after villa destinations in the region.
           </p>
 
           {/* BUTTONS */}
-          <div className="flex gap-6 flex-wrap">
-            <button
-              onClick={() => navigate("/aboutus")}
-              className="px-8 py-3 bg-[#11689B] text-white rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >
-              Explore Our Story
+          <div className="flex gap-6 mt-8">
+            <button className="px-8 py-3 bg-[#11689B] text-white rounded-full shadow-md hover:scale-105 transition-all">
+              Read More...
             </button>
 
-            <button className="px-8 py-3 border-2 border-[#11689B] text-[#11689B] rounded-full hover:bg-[#11689B] hover:text-white transition-all duration-300">
+            <button className="px-8 py-3 border-2 border-[#11689B] text-[#11689B] rounded-full hover:bg-[#11689B] hover:text-white transition-all">
               Download Brochure
             </button>
           </div>
         </div>
-
       </div>
 
-      {/* Animations */}
+      {/* Animation CSS */}
       <style>
         {`
-          @keyframes softFloat {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-18px); }
-            100% { transform: translateY(0px); }
+          .animate-spin-slow {
+            animation: spin 20s linear infinite;
           }
-          @keyframes softFloatReverse {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(18px); }
-            100% { transform: translateY(0px); }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
-          .animate-softFloat { animation: softFloat 5s ease-in-out infinite; }
-          .animate-softFloatReverse { animation: softFloatReverse 5s ease-in-out infinite; }
         `}
       </style>
     </section>
