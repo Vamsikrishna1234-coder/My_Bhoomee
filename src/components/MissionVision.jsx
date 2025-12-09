@@ -2,7 +2,7 @@ import React from "react";
 
 const MissionVision = () => {
   return (
-    <section className="py-16 px-6 bg-gradient-to-r from-white via-[#EFF7FF] to-[#D9EEFF] text-black">
+    <section className="py-16 px-6 bg-[#F8F2E9] text-black">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Title */}
@@ -74,12 +74,11 @@ const MissionVision = () => {
         </div>
       </div>
 
-      {/* Hover Animation Style */}
+      {/* Hover Animations */}
       <style>{`
         .animated-text {
           display: inline-block;
           transition: transform 0.35s ease, color 0.3s ease;
-          cursor: default;
         }
         .animated-text:hover {
           transform: translateY(-4px);
@@ -89,7 +88,6 @@ const MissionVision = () => {
         .animated-list-item {
           display: block;
           transition: transform 0.35s ease, color 0.3s ease;
-          cursor: default;
         }
         .animated-list-item:hover {
           transform: translateY(-4px);

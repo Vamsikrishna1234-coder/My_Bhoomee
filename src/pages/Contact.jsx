@@ -29,7 +29,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-20 bg-gradient-to-r from-white via-[#EFF7FF] to-[#D9EEFF]">
+    <section className="relative py-20 bg-[#F8F2E9]">
       <div className="container mx-auto px-6 lg:px-20">
 
         {/* Heading */}
@@ -48,7 +48,9 @@ const Contact = () => {
 
           {/* LEFT CARD */}
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-200">
-            <h3 className="text-2xl font-semibold mb-6 text-[#11689B]">Reach Us At</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-[#11689B]">
+              Reach Us At
+            </h3>
 
             <ul className="space-y-5 text-gray-700">
               <li className="flex gap-3">
@@ -63,21 +65,24 @@ const Contact = () => {
 
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-[#11689B] text-xl" />
-                <a href="tel:+918123456789" className="hover:text-[#11689B]">
+                <a href="tel:+918123456789" className=" !text-[#11689B] !no-underline">
                   +91 81234 56789
                 </a>
               </li>
 
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-[#11689B] text-xl" />
-                <a href="mailto:office@mybhumi.com" className="hover:text-[#11689B]">
+                <a href="mailto:office@mybhumi.com" className="!text-[#11689B] !no-underline">
                   office@mybhumi.com
                 </a>
               </li>
 
               <li className="flex items-center gap-3">
                 <FaClock className="text-[#11689B] text-xl" />
-                <p>Mon–Sat: 9AM – 6PM<br />Sunday: Closed</p>
+                <p>
+                  Mon–Sat: 9AM – 6PM<br />
+                  Sunday: Closed
+                </p>
               </li>
             </ul>
 
@@ -97,7 +102,9 @@ const Contact = () => {
 
           {/* RIGHT FORM */}
           <div className="bg-white rounded-3xl shadow-lg p-10 border border-gray-200">
-            <h3 className="text-3xl font-semibold text-[#11689B] mb-6">Send Us a Message</h3>
+            <h3 className="text-3xl font-semibold text-[#11689B] mb-6">
+              Send Us a Message
+            </h3>
 
             <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
 
@@ -150,19 +157,26 @@ const Contact = () => {
               <button
                 disabled={sending}
                 className={`w-full py-3 rounded-md text-white font-semibold transition ${
-                  sending ? "bg-[#0f5c89]/60 cursor-not-allowed" : "bg-[#11689B] hover:bg-[#0f5c89]"
+                  sending
+                    ? "bg-[#0f5c89]/60 cursor-not-allowed"
+                    : "bg-[#11689B] hover:bg-[#0f5c89]"
                 }`}
               >
                 {sending ? "Sending..." : "Send Message"}
               </button>
 
               {status.msg && (
-                <p className={`text-center font-medium ${status.ok ? "text-green-600" : "text-red-600"}`}>
+                <p
+                  className={`text-center font-medium ${
+                    status.ok ? "text-green-600" : "text-red-600"
+                  }`}
+                >
                   {status.msg}
                 </p>
               )}
             </form>
           </div>
+
         </div>
       </div>
     </section>

@@ -1,105 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 
 const LocationHighlights = () => {
-  const highlights = [
-    { time: "10 min", place: "Ratnadeep Supermarket", icon: "store" },
-    { time: "10 min", place: "Green Field Resorts", icon: "tree" },
-    { time: "20 min", place: "TSPA ORR Junction", icon: "highway" },
-    { time: "30 min", place: "RGI Airport", icon: "plane" },
-    { time: "30 min", place: "Hitech-City", icon: "building" },
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggles = [
+    {
+      title: "IT, Leisure & Transport Hubs",
+      icon: "🧭",
+      items: [
+        "20 min – Hitech City",
+        "10 min – Green Field Resorts",
+        "20 min – TSPA ORR Junction",
+        "30 min – RGI Airport",
+      ],
+    },
+    {
+      title: "Shopping & Entertainment",
+      icon: "🛍️",
+      items: ["10 min – Ratnadeep Supermarket", "15 min – Asian Cinemas"],
+    },
   ];
 
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <section className="relative py-24 bg-gradient-to-br from-slate-50 via-[#f0f9ff] to-white overflow-hidden">
-      {/* Floating Orbs */}
-      <div className="absolute top-10 -left-20 w-80 h-80 bg-gradient-to-br from-[#11689B]/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 -right-20 w-80 h-80 bg-gradient-to-tl from-[#11689B]/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <section className="w-full bg-[#F8F2E9] py-10">
+      <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-2">
 
-      <div className="container mx-auto px-6 lg:px-20 relative z-10">
-        
-        {/* === LOCATION HIGHLIGHTS HEADING (Top) === */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-[#11689B] to-[#0e547e] text-white rounded-full shadow-xl mb-6">
-            <span className="text-lg font-bold tracking-widest uppercase">Moinabad-Hyderabad</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
-            Location <span className="text-[#11689B]">Highlights</span>
-          </h2>
-          <p className="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
-            Strategically located in Moinabad, Hyderabad — close to everything that matters.
+        {/* LEFT SECTION */}
+        <div className="px-10 py-12">
+
+          <p className="text-[#11689B] text-3xl font-bold uppercase tracking-wide mb-3 flex items-center gap-1">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png"
+              className="w-6 h-6"
+            />
+            LOCATION HIGHLIGHTS
           </p>
-        </div>
 
-        {/* Interactive Timeline Cards */}
-        <div className="max-w-5xl mx-auto">
-          <div className="relative">
-            {/* Center Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#11689B]/30 to-transparent hidden lg:block"></div>
+          <h2 className="text-3xl font-bold text-black leading-tight">
+            Perfectly Positioned for Leisure & Transport Connectivity
+          </h2>
 
-            {highlights.map((item, index) => (
-              <div
-                key={index}
-                className={`relative flex items-center justify-center mb-10 lg:mb-16 transform transition-all duration-500 hover:scale-105 ${
-                  index % 2 === 0 ? "lg:justify-end" : "lg:justify-start"
-                }`}
-              >
-                {/* Card */}
-                <div
-                  className={`relative w-full lg:w-80 p-6 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 hover:border-[#11689B]/50 transition-all duration-300 group cursor-pointer ${
-                    index % 2 === 0 ? "lg:mr-8" : "lg:ml-8"
-                  }`}
-                  style={{
-                    transform: `translateX(${index % 2 === 0 ? "-20px" : "20px"})`,
-                  }}
+          <p className="text-gray-700 text-lg leading-relaxed mt-4">
+            Located in a rapidly developing part of Hyderabad, this address offers seamless 
+            connectivity to both leisure and key transport hubs. With Hitech City just 
+            20 minutes away, Green Field Resorts within 10 minutes, and the TSPA ORR 
+            Junction accessible in 20 minutes, you remain connected to major urban conveniences. 
+            Even the RGI Airport is only 30 minutes away, making travel easier and stress-free 
+            for both business and family journeys.
+          </p>
+
+          {/* ACCORDION LIST */}
+          <div className="mt-12 space-y-6">
+            {toggles.map((item, index) => (
+              <div key={index}>
+                <button
+                  onClick={() => toggleAccordion(index)}
+                  className="w-full flex justify-between items-center text-left text-2xl font-semibold text-[#11689B] hover:text-black transition"
                 >
-                  {/* SVG Icon */}
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-[#11689B] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    {item.icon === "store" && (
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 5h14l-1.5 7H4.5L3 5z" />
-                        <path d="M6 16a1 1 0 100-2 1 1 0 000 2zM14 16a1 1 0 100-2 1 1 0 000 2z" />
-                      </svg>
-                    )}
-                    {item.icon === "tree" && (
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 2L6 7h3v9h2V7h3L10 2z" />
-                      </svg>
-                    )}
-                    {item.icon === "highway" && (
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 8h14M7 12h6M5 16h10" stroke="currentColor" strokeWidth="2" fill="none" />
-                      </svg>
-                    )}
-                    {item.icon === "plane" && (
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M17 10l-7-6v4H3v4h7v4l7-6z" />
-                      </svg>
-                    )}
-                    {item.icon === "building" && (
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M4 4h12v12H4V4zm2 2v2h2V6H6zm4 0v2h2V6h-2zm-4 4v2h2v-2H6zm4 0v2h2v-2h-2zm-4 4v2h2v-2H6zm4 0v2h2v-2h-2z" />
-                      </svg>
-                    )}
-                  </div>
+                  <span className="flex items-center gap-3">
+                    <span className="text-3xl">{item.icon}</span> {item.title}
+                  </span>
+                  <span className="text-4xl font-light">
+                    {openIndex === index ? "−" : "+"}
+                  </span>
+                </button>
 
-                  <div className="text-center mt-4">
-                    <div className="text-3xl font-bold text-[#11689B] mb-1">{item.time}</div>
-                    <div className="text-gray-700 font-medium">{item.place}</div>
-                  </div>
+                {openIndex === index && (
+                  <ul className="mt-3 ml-10 text-gray-700 text-lg space-y-2">
+                    {item.items.map((point, i) => (
+                      <li key={i}>• {point}</li>
+                    ))}
+                  </ul>
+                )}
 
-                  {/* Pulse Ring */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-[#11689B] opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 pointer-events-none"></div>
-                </div>
-
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-white border-4 border-[#11689B] rounded-full shadow-md hidden lg:block z-10"></div>
+                <div className="border-b border-gray-300 mt-4"></div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* === REMOVED BOTTOM TAGLINE === */}
-        {/* No more "Moinabad - Hyderabad" or "Your gateway..." */}
+        {/* RIGHT SIDE — GOOGLE MAP WITH DARK OVERLAY */}
+        <div className="relative h-[600px] lg:h-full w-full">
+
+          {/* Black overlay */}
+          <div className="absolute inset-0 bg-black opacity-40 z-10 pointer-events-none"></div>
+
+          {/* Google Maps iframe */}
+          <iframe
+            title="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.609923549259!2d78.366!3d17.439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b!2sHyderabad!5e0!3m2!1sen!2sin!4v1700000000000"
+            className="w-full h-full object-cover"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
+
+        </div>
       </div>
     </section>
   );

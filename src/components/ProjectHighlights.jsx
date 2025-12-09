@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { easeInOut } from "framer-motion";
-import { Check } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -12,181 +10,203 @@ import h4 from "../assets/images/glassvilla/glass villa.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectHighlights = () => {
-  const containerRef = useRef(null);
-  const rowRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const cardRefs = useRef([]);
 
-  // 6 HIGHLIGHTS (2 per row → 3 rows)
-  const highlights = [
+  const cards = [
     {
-      title: "Spacious Living Areas",
-      subtitle: "Designed with wide layouts, luxury finishes & openness.",
       image: h1,
-      points: ["Premium Flooring", "Wide Balconies", "Cross Ventilation"],
+      title1: "ACRES",
+      value1: "25+ Acres Gated Community",
+      title2: "VILLAS",
+      value2: "150 Luxury Villas",
     },
     {
-      title: "World-Class Amenities",
-      subtitle: "25+ curated lifestyle amenities for all age groups.",
       image: h2,
-      points: ["Infinity Pool", "Clubhouse", "Kids Play Area"],
+      title1: "DESIGN",
+      value1: "Contemporary Tropical Architecture",
+      title2: "PLOTS",
+      value2: "400 - 1000 Sq.Yards",
     },
     {
-      title: "Premium Construction",
-      subtitle: "Built with strong RCC & advanced safety engineering.",
       image: h3,
-      points: ["Earthquake Resistant", "Smart Home Ready", "Strong RCC"],
+      title1: "AMENITIES",
+      value1: "60+ World-Class Amenities",
+      title2: "CLUBHOUSE",
+      value2: "1,00,000 Sq.Ft.",
     },
     {
-      title: "Green Landscapes",
-      subtitle: "Lush green spaces designed for peace & wellness.",
       image: h4,
-      points: ["Meditation Lawn", "Walking Trail", "Floral Gardens"],
-    },
-    {
-      title: "Smart Home Features",
-      subtitle: "Modern automated features for next-gen living.",
-      image: h1,
-      points: ["Smart Locks", "Energy Saving", "App Controlled"],
-    },
-    {
-      title: "Advanced Security",
-      subtitle: "A completely secured gated community.",
-      image: h2,
-      points: ["CCTV Network", "Security Cabin", "Access Control"],
+      title1: "LOCATION",
+      value1: "Moinabad, Hyderabad",
+      title2: "CONNECTIVITY",
+      value2: "15 Min to Gachibowli",
     },
   ];
-
-  // Convert into rows of 2
-  const rows = [];
-  for (let i = 0; i < highlights.length; i += 2) {
-    rows.push([highlights[i], highlights[i + 1]]);
-  }
 
   useEffect(() => {
     if (window.innerWidth < 1024) return;
 
     const ctx = gsap.context(() => {
-      const totalRows = rowRefs.current.length;
-
-      rowRefs.current.forEach((row, index) => {
-        if (!row) return;
-
-        // Pin each ROW (two cards)
-        ScrollTrigger.create({
-          trigger: row,
-          start: "center center",
-          end: () => `+=${(totalRows - index) * 400}`,
-          pin: true,
-          pinSpacing: false,
-        });
-
-        // Stacking animation for last row
-        if (index === totalRows - 1) {
-          gsap.to(rowRefs.current, {
-            yPercent: -60 * totalRows,
-            ease: easeInOut,
-            scrollTrigger: {
-              trigger: row,
-              start: "top top",
-              end: () => `+=${totalRows * 200}`,
-              scrub: 1,
-            },
-          });
-        }
+      gsap.set(cardRefs.current.slice(1), {
+        y: 120,
+        opacity: 0,
+        scale: 0.95,
       });
-    }, containerRef);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=2000",
+          pin: sectionRef.current,
+          scrub: 1,
+          anticipatePin: 1,
+        },
+      });
+
+      cardRefs.current.slice(1).forEach((card, i) => {
+        tl.to(
+          card,
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          i * 0.6
+        );
+      });
+    });
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="relative bg-[#F8F2E9] py-14">
+    <section
+      ref={sectionRef}
+      className="relative bg-[#F8F2E9] overflow-hidden pb-0 lg:pb-32"
+    >
+      <div className="max-w-[1800px] mx-auto grid lg:grid-cols-2 px-6 lg:px-12 gap-12">
 
-      {/* HEADING + DESCRIPTION */}
-      <div className="text-center max-w-4xl mx-auto px-6 mb-6">
-        <h2 className="text-5xl font-bold text-[#11689B] mb-4">
-          Project <span className="text-black">Highlights</span>
-        </h2>
+        {/* LEFT FIXED CONTENT */}
+        <div className="sticky top-24 self-start z-20 py-6 lg:py-16">
+          <p className="text-2xl text-[#11689B] font-bold tracking-widest mb-4">
+            PROJECT HIGHLIGHTS
+          </p>
 
-        <p className="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
-          Experience a lifestyle enriched with luxury, convenience, and
-          world-class design. Each feature is carefully crafted to offer
-          comfort, elegance, and an elevated living experience.
-        </p>
-      </div>
 
-      {/* STACKING ROWS (DESKTOP) */}
-      <div className="hidden lg:block">
-        {rows.map((pair, rowIndex) => (
-          <div
-            key={rowIndex}
-            ref={(el) => (rowRefs.current[rowIndex] = el)}
-            className="flex justify-center items-center min-h-[460px]"
-            style={{ zIndex: rowIndex + 1 }}
-          >
-            <div className="grid grid-cols-2 gap-4 w-full max-w-8xl px-6">
+          {/* DESCRIPTION */}
+          <div className="space-y-5 text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl">
+            <p>
+              Welcome to <span className="font-bold text-black">MyBhoomee</span> — where luxury meets serenity in the green
+              heart of Moinabad, Hyderabad.
+            </p>
+            <p>
+              Spread across 25+ acres of pristine land, this exclusive gated villa community offers a lifestyle of
+              peace, privacy, and prestige.
+            </p>
+            <p>
+              Each villa is crafted with contemporary tropical architecture, blending indoor-outdoor living with lush
+              landscapes and natural light.
+            </p>
+            <p>
+              Enjoy a 1,00,000 sq.ft. clubhouse, 60+ world-class amenities, and a location just 15 minutes from
+              Gachibowli & Financial District.
+            </p>
+            <p>
+              Your dream home isn’t just a residence — it’s a legacy in the making.
+            </p>
+          </div>
 
-              {pair.map(
-                (item, i) =>
-                  item && (
-                    <div
-                      key={i}
-                      className="relative bg-black rounded-l overflow-hidden shadow-xl border border-gray-200 min-h-[420px]"
-                    >
-                      {/* Background */}
-                      <div
-                        className="absolute inset-0 bg-cover bg-center opacity-50"
-                        style={{ backgroundImage: `url(${item.image})` }}
-                      ></div>
+          <div className="mt-12">
+            {/* SMALLER BUTTON */}
+            <a
+              href="#enquire"
+              className="inline-block bg-[#11689B] hover:bg-[#b07d2a] text-white font-semibold text-base px-8 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-xl !no-underline"
+            >
+              Explore MyBhoomee
+            </a>
+          </div>
+        </div>
 
-                      {/* Content */}
-                      <div className="relative z-10 p-8 text-white">
-                        <h3 className="text-3xl font-bold mb-2">{item.title}</h3>
-                        <p className="mb-4 text-lg">{item.subtitle}</p>
+        {/* RIGHT — STACKING CARDS */}
+        <div className="relative min-h-screen pb-10">
+            <div className="sticky top-24 h-screen flex items-start translate-y-40">
+            <div className="relative w-full max-w-8xl">  
+              
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  className="
+                    absolute 
+                    w-full 
+                    h-[500px]     /* reduced height */
+                    bg-white 
+                    rounded-3xl 
+                    overflow-hidden 
+                    shadow-2xl 
+                    border border-gray-100
+                  "
+                  style={{
+                    top: `${i * 15}px`,
+                    zIndex: i + 1,
+                  }}
+                >
+                  {/* IMAGE */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${card.image})` }}
+                  />
 
-                        <ul className="space-y-2">
-                          {item.points.map((p, j) => (
-                            <li key={j} className="flex items-center">
-                              <span className="text-green-400 mr-3">✔</span>
-                              {p}
-                            </li>
-                          ))}
-                        </ul>
+                  {/* GRADIENT */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
+
+                  {/* CONTENT */}
+                  <div className="relative z-10 h-full flex items-end p-10 lg:p-12">
+                    <div className="text-white max-w-lg">
+                      <div className="grid grid-cols-2 gap-10">
+                        
+                        {/* LEFT BOX */}
+                        <div>
+                          <div className="w-24 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
+                            <span className="text-xs font-bold tracking-widest">
+                              {card.title1}
+                            </span>
+                          </div>
+                          <p className="text-xl lg:text-2xl font-bold">
+                            {card.value1}
+                          </p>
+                        </div>
+
+                        {/* RIGHT BOX */}
+                        <div>
+                          <div className="w-26 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
+                            <span className="text-xs font-bold tracking-widest">
+                              {card.title2}
+                            </span>
+                          </div>
+                          <p className="text-xl lg:text-2xl font-bold">
+                            {card.value2}
+                          </p>
+                        </div>
+
                       </div>
                     </div>
-                  )
-              )}
+                  </div>
+
+                </div>
+              ))}
 
             </div>
           </div>
-        ))}
+        </div>
+
       </div>
-
-      <div className="h-[400px]"></div>
-
-      {/* MOBILE NORMAL VIEW */}
-      <div className="lg:hidden px-6 space-y-6 mt-8">
-        {highlights.map((item, index) => (
-          <div key={index} className="bg-white shadow-lg rounded-xl overflow-hidden">
-            <img src={item.image} className="w-full h-56 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-              <p className="text-gray-600 mb-3">{item.subtitle}</p>
-
-              <ul className="space-y-1">
-                {item.points.map((p, j) => (
-                  <li key={j} className="flex items-center">
-                    <span className="text-green-600 mr-2">✔</span>
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
-
     </section>
   );
 };
 
-export default ProjectHighlights;
+export default ProjectHighlights;   

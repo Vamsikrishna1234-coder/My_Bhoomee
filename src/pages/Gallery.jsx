@@ -14,10 +14,10 @@ import Glass1 from "../assets/images/glassvilla/glass villa.jpg"
 import Glass2 from "../assets/images/glassvilla/glass villa1.png"
 import Glass3 from "../assets/images/glassvilla/glass villa2.jpg"
 import Glass4 from "../assets/images/glassvilla/glass villa2.jpg"
-import Bali1 from "../assets/images/bali/baliimg1.jpg"
-import Bali2 from "../assets/images/bali/baliimg2.jpg"
-import Bali3 from "../assets/images/bali/baliimg3.png"
-import Bali4 from "../assets/images/bali/baliimg4.png"
+import Bali1 from "../assets/images/bali/bali img1.jpeg"
+import Bali2 from "../assets/images/bali/bali img2.jpeg"
+import Bali3 from "../assets/images/bali/bali img3.jpeg"
+import Bali4 from "../assets/images/bali/bali img1.jpeg"
 
 const galleryData = [
   {
@@ -64,7 +64,7 @@ const galleryData = [
       { id: 20, src: Bali2, alt: "Bali Harmony Bedroom" },
       { id: 21, src: Bali3, alt: "Bali Harmony Garden" },
       { id: 22, src: Bali4, alt: "Bali Harmony Pool" },
-      { id: 23, src: Bali1, alt: "Bali Harmony Lounge" },
+      { id: 23, src: Bali3, alt: "Bali Harmony Lounge" },
       { id: 24, src: Bali2, alt: "Bali Harmony View" },
     ],
   },

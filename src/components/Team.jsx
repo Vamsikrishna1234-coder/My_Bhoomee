@@ -27,8 +27,9 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="py-20 bg-[#f5f7fa]" id="team">
+    <section className="py-20 bg-[#F8F2E9]" id="team">
       <div className="max-w-7xl mx-auto px-6 text-center">
+
         {/* Heading */}
         <h2
           className="text-4xl font-bold mb-4"
@@ -40,11 +41,11 @@ export default function Team() {
         >
           Meet Our Team
         </h2>
-        <p className="text-gray-600 mb-12">
+        <p className="text-gray-700 mb-12">
           The passionate people behind Bhumi Real Estate.
         </p>
 
-        {/* ✅ Perfectly Responsive Grid with Centering Fix */}
+        {/* Responsive Grid */}
         <div
           className="
             grid 
@@ -62,15 +63,13 @@ export default function Team() {
               key={index}
               className="w-[90%] sm:w-[85%] md:w-[260px] lg:w-[240px] xl:w-[260px] h-[380px] group perspective cursor-pointer"
             >
-              {/* ---------- DESKTOP VERSION (Hover Animation) ---------- */}
+              {/* Desktop Hover Card */}
               <div className="hidden lg:block relative w-full h-[380px]">
-                {/* Background Image */}
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-all duration-[900ms] group-hover:bg-[150px_0]"
                   style={{ backgroundImage: `url(${member.img})` }}
                 ></div>
 
-                {/* Flip Box */}
                 <div
                   className="absolute left-0 top-0 w-[230px] h-full bg-[#11689B] text-white text-center box-border px-3 py-24 transform origin-left rotate-y-[-90deg] transition-all duration-[900ms] group-hover:rotate-y-0"
                   style={{
@@ -122,7 +121,7 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* ---------- MOBILE & TABLET VERSION ---------- */}
+              {/* Mobile + Tablet Card */}
               <div className="block lg:hidden text-center">
                 <img
                   src={member.img}
@@ -132,8 +131,9 @@ export default function Team() {
                 <h3 className="text-xl font-semibold text-[#11689B] mt-3">
                   {member.name}
                 </h3>
-                <p className="text-gray-600 text-sm">{member.role}</p>
+                <p className="text-gray-700 text-sm">{member.role}</p>
               </div>
+
             </div>
           ))}
         </div>

@@ -51,7 +51,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-r from-white via-[#EFF7FF] to-[#D9EEFF]">
+    <section className="py-20 px-6 bg-[#F8F2E9]">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

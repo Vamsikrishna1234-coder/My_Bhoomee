@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import home1 from "../assets/images/banner1.jpg";
-import home2 from "../assets/images/glassvilla/glass villa2.jpg";
-import home3 from "../assets/images/wooden/wooden interior.jpg";
-import home4 from "../assets/images/wooden/wooden pool.jpg";
+import home1 from "../assets/images/home1.jpg";
+import home2 from "../assets/images/home2.jpg";
+import home3 from "../assets/images/home5.jpg";
+import home4 from "../assets/images/home4.jpg";
 
 const slides = [
   {
@@ -10,18 +10,14 @@ const slides = [
   },
   {
     image: home2,
-    caption: "Build the Future You Deserve",
-    subtitle: "Quality construction with world-class amenities",
+   
   },
   {
     image: home3,
-    caption: "Your Dream Home Awaits",
-    subtitle: "Hyderabad’s most trusted real-estate developers",
+    
   },
   {
     image: home4,
-    caption: "Luxury Living Redefined",
-    subtitle: "Experience comfort, convenience & premium lifestyle",
   },
 ];
 

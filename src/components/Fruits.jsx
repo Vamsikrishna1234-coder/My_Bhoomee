@@ -54,7 +54,7 @@ const fruits = [
 
 const FruitsGallery = () => {
   return (
-    <section className="py-16 px-6 bg-gradient-to-b from-green-50 to-white">
+    <section className="py-16 px-6 bg-[#F8F2E9]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

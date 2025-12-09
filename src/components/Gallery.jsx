@@ -1,130 +1,80 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import Wooden1 from "../assets/images/wooden/wooden natural .jpg";
-import Wooden3 from "../assets/images/wooden/wooden garden.jpg";
-import Kerala2 from "../assets/images/manduva/kerala manduva2.jpg";
-import Kerala3 from "../assets/images/manduva/kerala manduva3.jpg";
-import Glass2 from "../assets/images/glassvilla/glass villa1.png";
-import Glass3 from "../assets/images/glassvilla/glass villa2.jpg";
+// IMPORT YOUR IMAGES
+import img1 from "../assets/images/wooden/wooden natural .jpg";
+import img2 from "../assets/images/wooden/wooden garden.jpg";
+import img3 from "../assets/images/manduva/kerala manduva2.jpg";
+import img4 from "../assets/images/manduva/kerala manduva3.jpg";
+import img5 from "../assets/images/glassvilla/glass villa1.png";
+import img6 from "../assets/images/glassvilla/glass villa2.jpg";
 
-const galleryImages = [Wooden1, Wooden3, Kerala2, Kerala3, Glass2, Glass3];
+const sets = [
+  [img1, img2, img3],
+  [img4, img5, img6],
+];
 
-const GallerySection = () => {
-  const sliderRef = useRef(null);
-  const isDesktop = window.innerWidth >= 1024;
+export default function NivritiStyleGallery() {
+  const [index, setIndex] = useState(0);
 
-  // NEW WIDTH + HEIGHT
-  const cardWidthDesktop = 650; // wider images
-  const cardGap = 20;
-  const cardHeightDesktop = 400; // shorter height
-
-  // Auto Scroll for Desktop
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const interval = setInterval(() => {
-      handleNext();
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
-    const slider = sliderRef.current;
-    slider.style.scrollBehavior = "smooth";
-
-    if (isDesktop) {
-      slider.scrollLeft -= cardWidthDesktop + cardGap;
-    } else {
-      slider.scrollLeft -= slider.clientWidth;
-    }
-  };
-
-  const handleNext = () => {
-    const slider = sliderRef.current;
-    slider.style.scrollBehavior = "smooth";
-
-    if (isDesktop) {
-      slider.scrollLeft += cardWidthDesktop + cardGap;
-    } else {
-      slider.scrollLeft += slider.clientWidth;
-    }
-
-    // Loop back
-    setTimeout(() => {
-      if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-        slider.style.scrollBehavior = "auto";
-        slider.scrollLeft = 0;
-      }
-    }, 350);
-  };
+  const next = () => setIndex((prev) => (prev + 1) % sets.length);
+  const prev = () => setIndex((prev) => (prev - 1 + sets.length) % sets.length);
 
   return (
-    <section className="py-12 bg-[#F8F2E9]">
-      <div className="relative w-full overflow-hidden">
+    <section className="bg-[#F8F2E9] py-14">
+      
+      {/* HEADING */}
+      <h2 className="text-center text-3xl md:text-4xl font-serif italic mb-10">
+         Premium Villas @ MyBhoomee
+      </h2>
 
-        {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-bold text-[#11689B] text-center mb-8">
-          MyBhumi Gallery
-        </h2>
+      {/* GALLERY WRAPPER */}
+      <div className="max-w-[1500px] mx-auto relative px-4">
 
-        {/* Left Button */}
+        {/* LEFT ARROW */}
         <button
-          onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] 
-          hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center 
-          rounded-full z-20"
+          onClick={prev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/70 hover:bg-white 
+          shadow-xl w-10 h-10 flex items-center justify-center rounded-full"
         >
-          <ChevronLeft size={22} />
+          <ChevronLeft size={28} />
         </button>
 
-        {/* Slider */}
-        <div
-          ref={sliderRef}
-          className="flex overflow-hidden select-none"
-          style={{
-            gap: isDesktop ? `${cardGap}px` : "0px",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
+        {/* RIGHT ARROW */}
+        <button
+          onClick={next}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/70 hover:bg-white
+          shadow-xl w-10 h-10 flex items-center justify-center rounded-full"
         >
-          {[...galleryImages, ...galleryImages].map((img, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 cursor-pointer  overflow-hidden"
-              style={{
-                width: isDesktop ? `${cardWidthDesktop}px` : "100vw",
-                height: isDesktop ? `${cardHeightDesktop}px` : "320px",
-              }}
-              onClick={() =>
-                (window.location.href = `/gallery?project=${(idx % galleryImages.length) + 1}`)
-              }
-            >
+          <ChevronRight size={28} />
+        </button>
+
+        {/* 3 IMAGES */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {sets[index].map((img, i) => (
+            <div key={i} className="w-full h-[400px] overflow-hidden rounded-lg shadow-lg">
               <img
                 src={img}
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
                 alt=""
               />
             </div>
           ))}
         </div>
 
-        {/* Right Button */}
+      </div>
+
+      {/* VIEW GALLERY BUTTON */}
+      <div className="mt-10 flex justify-center">
         <button
-          onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-[#11689B] 
-          hover:bg-gray-100 shadow-md w-10 h-10 flex items-center justify-center 
-          rounded-full z-20"
+          onClick={() => (window.location.href = "/gallery")}
+          className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full shadow-md 
+           transition-all duration-300"
         >
-          <ChevronRight size={22} />
+          View Gallery
         </button>
       </div>
 
-      {/* Hide scrollbars */}
-      <style>{`::-webkit-scrollbar{display:none;}`}</style>
     </section>
   );
-};
-
-export default GallerySection;
+}
