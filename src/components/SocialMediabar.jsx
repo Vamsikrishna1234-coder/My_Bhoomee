@@ -5,7 +5,7 @@ import {
   FaInstagram,
   FaFacebookF,
   FaYoutube,
-  FaTwitter,
+  FaLinkedinIn,
 } from "react-icons/fa";
 
 const SocialBar = () => {
@@ -13,7 +13,7 @@ const SocialBar = () => {
     <div className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-50">
       {/* WhatsApp */}
       <a
-        href="https://wa.me/916304445766"
+        href="#"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
@@ -23,7 +23,7 @@ const SocialBar = () => {
 
       {/* Instagram */}
       <a
-        href=""
+        href="https://www.instagram.com/mybhoomeespaceinfra/"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
@@ -33,7 +33,7 @@ const SocialBar = () => {
 
       {/* Facebook */}
       <a
-        href=""
+        href="https://www.facebook.com/mybhoomee"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
@@ -43,23 +43,25 @@ const SocialBar = () => {
 
       {/* YouTube */}
       <a
-        href=""
-        target="_blank"
+        href="#"
+        
         rel="noopener noreferrer"
         className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
       >
         <FaYoutube className="text-lg" />
       </a>
 
-      {/* Twitter */}
+      {/* linkedin */}
       <a
-        href=""
+        href="https://www.linkedin.com/in/my-bhoomee-space-infra-developers-004b18280/"  
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
+        className="bg-white w-10 h-10 flex items-center justify-center rounded-full text-[#11689B] 
+                  transition-all duration-300 shadow-md hover:bg-[#11689B] hover:text-white hover:scale-125"
       >
-        <FaTwitter className="text-lg" />
+        <FaLinkedinIn className="text-lg" />
       </a>
+
     </div>
   );
 };

@@ -6,6 +6,7 @@ import h1 from "../assets/images/wooden/wooden pool.jpg";
 import h2 from "../assets/images/manduva/kerala manduva2.jpg";
 import h3 from "../assets/images/wooden/wooden natural .jpg";
 import h4 from "../assets/images/glassvilla/glass villa.jpg";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,6 +46,7 @@ const ProjectHighlights = () => {
   ];
 
   useEffect(() => {
+    // Disable GSAP for mobile/tablet
     if (window.innerWidth < 1024) return;
 
     const ctx = gsap.context(() => {
@@ -61,7 +63,6 @@ const ProjectHighlights = () => {
           end: "+=2000",
           pin: sectionRef.current,
           scrub: 1,
-          anticipatePin: 1,
         },
       });
 
@@ -90,107 +91,121 @@ const ProjectHighlights = () => {
     >
       <div className="max-w-[1800px] mx-auto grid lg:grid-cols-2 px-6 lg:px-12 gap-12">
 
-        {/* LEFT FIXED CONTENT */}
-        <div className="sticky top-24 self-start z-20 py-6 lg:py-16">
+        {/* LEFT PANEL */}
+        <div className="lg:sticky lg:top-24 self-start z-20 py-6 lg:py-16">
           <p className="text-2xl text-[#11689B] font-bold tracking-widest mb-4">
             PROJECT HIGHLIGHTS
           </p>
 
-
-          {/* DESCRIPTION */}
           <div className="space-y-5 text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl">
             <p>
               Welcome to <span className="font-bold text-black">MyBhoomee</span> — where luxury meets serenity in the green
               heart of Moinabad, Hyderabad.
             </p>
             <p>
-              Spread across 25+ acres of pristine land, this exclusive gated villa community offers a lifestyle of
+              Spread across 25+ acres, this exclusive gated villa community offers a lifestyle of
               peace, privacy, and prestige.
             </p>
             <p>
-              Each villa is crafted with contemporary tropical architecture, blending indoor-outdoor living with lush
+              Each villa blends contemporary tropical architecture with lush
               landscapes and natural light.
             </p>
             <p>
-              Enjoy a 1,00,000 sq.ft. clubhouse, 60+ world-class amenities, and a location just 15 minutes from
+              Enjoy a 1,00,000 sq.ft. clubhouse, 60+ amenities, and a location 15 minutes from
               Gachibowli & Financial District.
             </p>
-            <p>
-              Your dream home isn’t just a residence — it’s a legacy in the making.
-            </p>
+            <p>Your dream home isn’t just a residence — it’s a legacy.</p>
           </div>
 
           <div className="mt-12">
-            {/* SMALLER BUTTON */}
-            <a
-              href="#enquire"
+            <Link
+              to="/contact"
               className="inline-block bg-[#11689B] hover:bg-[#b07d2a] text-white font-semibold text-base px-8 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-xl !no-underline"
             >
               Explore MyBhoomee
-            </a>
+            </Link>
           </div>
         </div>
 
-        {/* RIGHT — STACKING CARDS */}
-        <div className="relative min-h-screen pb-10">
-            <div className="sticky top-24 h-screen flex items-start translate-y-40">
-            <div className="relative w-full max-w-8xl">  
-              
+        {/* RIGHT PANEL */}
+        <div className="relative lg:min-h-screen pb-10">
+
+          {/* 📱 MOBILE + TABLET (VERTICAL + 2 PER ROW ON TABLET) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                className="w-full h-[260px] sm:h-[300px] bg-white rounded-2xl overflow-hidden shadow-xl border"
+              >
+                <div
+                  className="h-full bg-cover bg-center relative"
+                  style={{ backgroundImage: `url(${card.image})` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
+
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="w-20 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-2">
+                          <span className="text-[10px] font-bold tracking-widest">
+                            {card.title1}
+                          </span>
+                        </div>
+                        <p className="text-sm font-semibold">{card.value1}</p>
+                      </div>
+
+                      <div>
+                        <div className="w-20 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-2">
+                          <span className="text-[10px] font-bold tracking-widest">
+                            {card.title2}
+                          </span>
+                        </div>
+                        <p className="text-sm font-semibold">{card.value2}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 🖥 DESKTOP STACKING (WITH GSAP ANIMATION) */}
+          <div className="hidden lg:block sticky top-24 h-screen flex items-start translate-y-40">
+            <div className="relative w-full max-w-8xl">
               {cards.map((card, i) => (
                 <div
                   key={i}
                   ref={(el) => (cardRefs.current[i] = el)}
-                  className="
-                    absolute 
-                    w-full 
-                    h-[500px]     /* reduced height */
-                    bg-white 
-                    rounded-3xl 
-                    overflow-hidden 
-                    shadow-2xl 
-                    border border-gray-100
-                  "
-                  style={{
-                    top: `${i * 15}px`,
-                    zIndex: i + 1,
-                  }}
+                  className="absolute w-full h-[500px] bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
+                  style={{ top: `${i * 15}px`, zIndex: i + 1 }}
                 >
-                  {/* IMAGE */}
                   <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${card.image})` }}
                   />
 
-                  {/* GRADIENT */}
                   <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
 
-                  {/* CONTENT */}
                   <div className="relative z-10 h-full flex items-end p-10 lg:p-12">
                     <div className="text-white max-w-lg">
                       <div className="grid grid-cols-2 gap-10">
-                        
-                        {/* LEFT BOX */}
                         <div>
                           <div className="w-24 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
                             <span className="text-xs font-bold tracking-widest">
                               {card.title1}
                             </span>
                           </div>
-                          <p className="text-xl lg:text-2xl font-bold">
-                            {card.value1}
-                          </p>
+                          <p className="text-xl lg:text-2xl font-bold">{card.value1}</p>
                         </div>
 
-                        {/* RIGHT BOX */}
                         <div>
                           <div className="w-26 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
                             <span className="text-xs font-bold tracking-widest">
                               {card.title2}
                             </span>
                           </div>
-                          <p className="text-xl lg:text-2xl font-bold">
-                            {card.value2}
-                          </p>
+                          <p className="text-xl lg:text-2xl font-bold">{card.value2}</p>
                         </div>
 
                       </div>
@@ -199,9 +214,9 @@ const ProjectHighlights = () => {
 
                 </div>
               ))}
-
             </div>
           </div>
+
         </div>
 
       </div>
@@ -209,4 +224,4 @@ const ProjectHighlights = () => {
   );
 };
 
-export default ProjectHighlights;   
+export default ProjectHighlights;

@@ -66,7 +66,7 @@ const Projects = () => {
                 Bali Harmony
               </h3>
             </Link>
-
+            
           </div>
         </div>
       </section>

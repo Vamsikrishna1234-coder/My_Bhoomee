@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
+import bannerImg from "../assets/images/contact banner.jpg"; 
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -29,8 +30,22 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-20 bg-[#F8F2E9]">
-      <div className="container mx-auto px-6 lg:px-20">
+    <section className="relative bg-[#F8F2E9]">
+
+      {/* ⭐ TOP BANNER SECTION */}
+      <div className="pt-20 relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+        <img
+          src={bannerImg}
+          className="w-full h-full object-cover"
+          alt="Contact Banner"
+        />
+        <div className="absolute inset-0 bg-black/0"></div>
+
+        
+      </div>
+
+      {/* 🌿 MAIN CONTACT CONTENT */}
+      <div className="py-20 container mx-auto px-6 lg:px-20">
 
         {/* Heading */}
         <div className="text-center mb-14">
@@ -65,14 +80,14 @@ const Contact = () => {
 
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-[#11689B] text-xl" />
-                <a href="tel:+918123456789" className=" !text-[#11689B] !no-underline">
+                <a href="tel:+918123456789" className="text-[#11689B] no-underline">
                   +91 81234 56789
                 </a>
               </li>
 
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-[#11689B] text-xl" />
-                <a href="mailto:office@mybhumi.com" className="!text-[#11689B] !no-underline">
+                <a href="mailto:office@mybhumi.com" className="text-[#11689B] no-underline">
                   office@mybhumi.com
                 </a>
               </li>

@@ -2,15 +2,16 @@ import React, { useEffect, useRef } from "react";
 import amenityImg from "../assets/images/chooseus img2.jpg";
 
 import imgA from "../assets/images/wooden/wooden-villa.jpg";
-import imgB from "../assets/images/manduva/kerala manduva4.jpg";
+import imgB from "../assets/images/home6.jpg";
 import imgC from "../assets/images/glassvilla/glass villa2.jpg";
+import imgD from "../assets/images/bali housebanner.jpg";
 
 const AmenitiesSection = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
 
   // IMAGE LIST
-  const amenitiesImages = [imgA, imgB, imgC];
+  const amenitiesImages = [imgA, imgB, imgC,imgD];
 
   // TITLES
   const titles = [
@@ -62,10 +63,25 @@ const AmenitiesSection = () => {
       "🧱 Stylish Glass & Concrete Facade",
       "🌴 Rooftop Sit-out with Panoramic View",
     ],
+    [
+      "🏝️ Open Courtyard with Water Body",
+      "🌿 Tropical Garden Landscaping",
+      "🪵 Wooden & Natural Stone Accents",
+      "🛏️ 3 Luxurious Bedrooms",
+      "💧 Rainwater Harvesting System",
+      "🔥 Outdoor Sit-out & Family Zone",
+      "🌅 Large Glass Facades for Light",
+      "🚗 Covered Car Parking",
+      "💡 Ambient Mood Lighting",
+      "📷 CCTV Surveillance",
+      "⚡ 24/7 Power Backup",
+      "🧘 Meditation & Relaxation Corners",
+    ]
   ];
 
   /* -----------------------------------
-      GSAP STACKING ANIMATION FIXED
+      GSAP STACKING ANIMATION
+      (RUNS ONLY ON ≥1024px)
   ------------------------------------*/
   useEffect(() => {
     if (window.innerWidth < 1024) return;
@@ -94,7 +110,6 @@ const AmenitiesSection = () => {
         const total = cards.length;
 
         cards.forEach((card, i) => {
-          // pin each card longer to prevent overlap
           ScrollTrigger.create({
             trigger: card,
             start: "top top",
@@ -103,7 +118,6 @@ const AmenitiesSection = () => {
             pinSpacing: false,
           });
 
-          // final pull-away animation for stacking
           if (i === total - 1) {
             gsap.to(cards, {
               yPercent: -110 * total,
@@ -126,16 +140,16 @@ const AmenitiesSection = () => {
     <section className="bg-[#F8F2E9] pb-10">
 
       {/* HEADER MARQUEE */}
-      <div className="relative w-full h-[220px] md:h-[320px] overflow-hidden rounded-3xl mb-10">
+      <div className="relative w-full h-[180px] sm:h-[220px] md:h-[320px] overflow-hidden rounded-3xl mb-10">
         <img src={amenityImg} className="w-full h-full object-cover" alt="" />
         <div className="absolute inset-0 bg-black/35"></div>
 
         <div className="absolute inset-0 flex items-center overflow-hidden">
-          <div className="animate-marquee whitespace-nowrap opacity-80 flex gap-24">
+          <div className="animate-marquee whitespace-nowrap opacity-80 flex gap-12 sm:gap-20">
             {[...Array(6)].map((_, i) => (
               <span
                 key={i}
-                className="text-[60px] md:text-[120px] font-extrabold tracking-tight text-transparent stroke-white stroke-[2px]"
+                className="text-[36px] sm:text-[60px] md:text-[120px] font-extrabold text-transparent stroke-white"
               >
                 MyBhoomee Amenities
               </span>
@@ -145,7 +159,7 @@ const AmenitiesSection = () => {
 
         <style>{`
           .animate-marquee {
-            animation: marquee 18s linear infinite;
+            animation: marquee 16s linear infinite;
           }
           @keyframes marquee {
             0% { transform: translateX(0); }
@@ -155,7 +169,33 @@ const AmenitiesSection = () => {
         `}</style>
       </div>
 
-      {/* STACKED CARDS (DESKTOP) */}
+      {/* FALLBACK LAYOUT FOR MOBILE + TABLET */}
+      <div className="block lg:hidden px-4 sm:px-8 space-y-10">
+        {amenitiesImages.map((image, index) => (
+          <div
+            key={index}
+            className="w-full bg-white rounded-2xl shadow-xl overflow-hidden"
+          >
+            <div
+              className="h-[240px] sm:h-[320px] bg-cover bg-center relative"
+              style={{ backgroundImage: `url(${image})` }}
+            >
+              <div className="absolute inset-0 bg-black/40"></div>
+              <h2 className="absolute top-6 left-6 text-2xl sm:text-3xl font-bold text-white">
+                {titles[index]}
+              </h2>
+            </div>
+
+            <div className="p-5 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-800 text-sm sm:text-base">
+              {amenitiesData[index].map((item, i) => (
+                <p key={i}>⭐ {item}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* GSAP STACKED CARDS FOR ALL DESKTOPS (SMALL + LARGE) */}
       <div ref={containerRef} className="hidden lg:block relative">
         {amenitiesImages.map((image, index) => (
           <div key={index} className="h-[120vh] flex items-center justify-center">
@@ -171,7 +211,7 @@ const AmenitiesSection = () => {
                 <div className="absolute inset-0 bg-black/40"></div>
 
                 <div className="absolute inset-0 flex justify-center pt-16">
-                  <h2 className="text-5xl font-bold text-white drop-shadow-lg">
+                  <h2 className="text-5xl font-bold text-white">
                     {titles[index]}
                   </h2>
                 </div>
@@ -186,7 +226,6 @@ const AmenitiesSection = () => {
           </div>
         ))}
 
-        {/* BUFFER GAP */}
         <div className="h-[10vh]"></div>
       </div>
 

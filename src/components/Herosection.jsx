@@ -5,20 +5,10 @@ import home3 from "../assets/images/home5.jpg";
 import home4 from "../assets/images/home4.jpg";
 
 const slides = [
-  {
-    image: home1,
-  },
-  {
-    image: home2,
-   
-  },
-  {
-    image: home3,
-    
-  },
-  {
-    image: home4,
-  },
+  { image: home1 },
+  { image: home2 },
+  { image: home3 },
+  { image: home4 },
 ];
 
 const HeroSection = () => {
@@ -30,17 +20,21 @@ const HeroSection = () => {
     setTimeout(() => setCurtainOpen(true), 300);
   }, []);
 
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   return (
-    <div className="relative w-full min-h-[90vh] md:min-h-screen bg-black overflow-hidden">
-
+    <div
+      className="
+        relative w-full
+        min-h-[70vh]           /* Mobile height */
+        sm:min-h-[80vh]        /* Tablet height */
+        md:min-h-[90vh]        /* Small desktop height */
+        xl:min-h-screen        /* Large desktop unchanged */
+        bg-black overflow-hidden
+      "
+    >
       {/* Slides */}
       {slides.map((slide, index) => {
         const isActive = index === current;
@@ -54,41 +48,74 @@ const HeroSection = () => {
           >
             <img
               src={slide.image}
-              className="w-full h-full object-cover"
+              className="
+                w-full h-full object-cover
+                object-center
+              "
             />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/0"></div>
 
             {/* Caption */}
             {isActive && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-20">
-                <h1 className="text-white text-4xl sm:text-6xl font-bold mb-4 drop-shadow-lg">
-                  {slide.caption}
+              <div
+                className="
+                  absolute inset-0 flex flex-col justify-center items-center
+                  text-center px-4 sm:px-6
+                  z-20
+                "
+              >
+                <h1
+                  className="
+                    text-white 
+                    text-3xl sm:text-5xl md:text-6xl xl:text-6xl 
+                    font-bold mb-4 drop-shadow-xl
+                  "
+                >
+                  {/* Optional caption */}
                 </h1>
 
-                <p className="text-gray-200 text-lg sm:text-2xl mb-6 tracking-wide">
-                  {slide.subtitle}
-                </p>
-
-                
+                <p
+                  className="
+                    text-gray-200
+                    text-base sm:text-xl md:text-2xl 
+                    max-w-[700px] leading-relaxed
+                  "
+                ></p>
               </div>
             )}
           </div>
         );
       })}
 
-      {/* PREV / NEXT BUTTONS - Bottom Right */}
-      <div className="absolute bottom-6 right-6 flex gap-3 z-30">
+      {/* PREV / NEXT BUTTONS */}
+      <div
+        className="
+          absolute 
+          bottom-4 right-4 
+          sm:bottom-6 sm:right-6 
+          flex gap-3 
+          z-30
+        "
+      >
         <button
           onClick={prevSlide}
-          className="px-7 py-2 bg-white/90 text-black font-semibold rounded-lg shadow hover:bg-white transition"
+          className="
+            px-4 py-2 sm:px-6 
+            bg-white/90 text-black 
+            font-semibold rounded-lg shadow-md 
+            hover:bg-white transition
+          "
         >
           Prev
         </button>
+
         <button
           onClick={nextSlide}
-          className="px-4 py-2 bg-white/90 text-black font-semibold rounded-lg shadow hover:bg-white transition"
+          className="
+            px-4 py-2 sm:px-6 
+            bg-white/90 text-black 
+            font-semibold rounded-lg shadow-md 
+            hover:bg-white transition
+          "
         >
           Next
         </button>
@@ -96,15 +123,24 @@ const HeroSection = () => {
 
       {/* Curtain Animation */}
       <div
-        className={`absolute inset-0 bg-black z-40 transition-transform duration-[2000ms] ${
-          curtainOpen ? "translate-y-full" : ""
-        }`}
+        className={`
+          absolute inset-0 bg-black z-40 
+          transition-transform duration-[2000ms]
+          ${curtainOpen ? "translate-y-full" : ""}
+        `}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-5xl font-bold">
+        <div
+          className="
+            absolute top-1/2 left-1/2 
+            -translate-x-1/2 -translate-y-1/2 
+            text-white
+            text-3xl sm:text-4xl md:text-5xl xl:text-6xl
+            font-bold tracking-wide
+          "
+        >
           Welcome To MyBhoomee
         </div>
       </div>
-
     </div>
   );
 };

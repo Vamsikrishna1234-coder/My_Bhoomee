@@ -7,7 +7,7 @@ import Logowhite from "../assets/images/logo mybhumee white.png";
 const Footer = () => {
   const navItems = [
     { label: "Home", to: "/" },
-    { label: "About Us", to: "/about" },
+    { label: "About Us", to: "/aboutus" },
     { label: "Our Projects", to: "/projects" },
     { label: "Gallery", to: "/gallery" },
     { label: "Blogs", to: "/blogs" },
@@ -15,14 +15,14 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: "facebook", href: "https://facebook.com/yourpage" },
-    { icon: "twitter", href: "https://twitter.com/yourhandle" },
-    { icon: "instagram", href: "https://instagram.com/yourprofile" },
-    { icon: "linkedin", href: "https://linkedin.com/company/yourcompany" },
+    { icon: "facebook", href: "https://www.facebook.com/mybhoomee" },
+    { icon: "twitter", href: "https://twitter.com/" },
+    { icon: "instagram", href: "https://www.instagram.com/mybhoomeespaceinfra/" },
+    { icon: "linkedin", href: "https://www.linkedin.com/in/my-bhoomee-space-infra-developers-004b18280/" },
   ];
 
   return (
-    <footer className="bg-[#11689B] text-gray-100 py-10">
+    <footer className="bg-black text-white-100 py-10">
       <div className="container mx-auto px-4">
         {/* Responsive grid with equal left alignment */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -97,11 +97,16 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-100">
           © {new Date().getFullYear()}{" "}
-          <span className="text-white font-semibold">MyBhumi</span>. All rights reserved. | Designed
+          <span className="text-white font-semibold">MyBhoomee</span>. All rights reserved. | Designed
           by{" "}
-          <span className="font-medium text-white">
-            brick2tech
-          </span>
+          <a
+              href="https://brick2tech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white !no-underline"
+            >
+              Brick2tech
+            </a>
         </div>
       </div>
     </footer>

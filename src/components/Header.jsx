@@ -9,7 +9,6 @@ const Header = () => {
   const [mobileProjectOpen, setMobileProjectOpen] = useState(false);
 
   const closeTimer = useRef(null);
-
   const location = useLocation();
   const navRef = useRef(null);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
@@ -38,7 +37,7 @@ const Header = () => {
     (item) => item.to === location.pathname
   );
 
-  // Underline animation
+  // underline animation
   useEffect(() => {
     const animateUnderline = () => {
       if (!navRef.current || activeIndex === -1) {
@@ -61,27 +60,22 @@ const Header = () => {
     return () => window.removeEventListener("resize", animateUnderline);
   }, [location.pathname, activeIndex]);
 
-  // Scroll blur effect
+  // scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // OPEN DROPDOWN
+  // open desktop dropdown
   const openProjects = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setProjectOpen(true);
   };
 
-  // CLOSE DROPDOWN (but after delay)
+  // close desktop dropdown smoothly
   const closeProjects = () => {
-    closeTimer.current = setTimeout(() => {
-      setProjectOpen(false);
-    }, 180); // smooth delay (prevents flicker)
+    closeTimer.current = setTimeout(() => setProjectOpen(false), 180);
   };
 
   return (
@@ -115,10 +109,9 @@ const Header = () => {
                 onMouseEnter={() => item.dropdown && openProjects()}
                 onMouseLeave={() => item.dropdown && closeProjects()}
               >
-                {/* MAIN LINK + ARROW */}
                 <Link
                   to={item.to}
-                  className="font-semibold text-[17px] !text-black hover:text-gray-700 !no-underline flex items-center gap-1"
+                  className="font-semibold text-[17px] text-black hover:text-gray-700 !no-underline flex items-center gap-1"
                 >
                   {item.label}
 
@@ -133,18 +126,14 @@ const Header = () => {
                   )}
                 </Link>
 
-                {/* GLASS DROPDOWN */}
+                {/* FIXED DROPDOWN CLOSE LOGIC HERE */}
                 {item.dropdown && projectOpen && (
                   <div
                     className="
-                      absolute left-0 
-                      w-64 mt-4
-                      py-4 
-                      rounded-xl
-                      backdrop-blur-xl bg-white/20
+                      absolute left-0 w-64 mt-4 py-4 
+                      rounded-xl backdrop-blur-xl bg-white/20
                       shadow-[0_8px_30px_rgba(0,0,0,0.2)]
-                      border border-white/30
-                      animate-slideDown
+                      border border-white/30 animate-slideDown
                     "
                     style={{ top: "100%" }}
                     onMouseEnter={openProjects}
@@ -154,13 +143,10 @@ const Header = () => {
                       <Link
                         key={i}
                         to={sub.to}
+                        onClick={() => setProjectOpen(false)}  // ✔ dropdown closes
                         className="
-                          block px-5 py-3 
-                          text-black font-medium 
-                          hover:bg-white/40 
-                          rounded-lg 
-                          transition 
-                          !no-underline
+                          block px-5 py-3 text-black font-medium 
+                          hover:bg-white/40 rounded-lg transition !no-underline
                         "
                       >
                         {sub.label}
@@ -171,7 +157,7 @@ const Header = () => {
               </div>
             ))}
 
-            {/* UNDERLINE */}
+            {/* UNDERLINE EFFECT */}
             <span
               className="absolute bottom-0 h-[2px] bg-black rounded-full transition-all duration-300"
               style={{
@@ -204,7 +190,7 @@ const Header = () => {
           <nav className="lg:hidden bg-white shadow-xl py-4 space-y-2">
             {navItems.map((item, index) => (
               <div key={index}>
-                <div className="flex justify-between items-center px-4 py-2 !text-black font-medium hover:bg-gray-100">
+                <div className="flex justify-between items-center px-4 py-2 text-black font-medium hover:bg-gray-100">
                   <Link
                     to={item.to}
                     onClick={() => setIsOpen(false)}
@@ -215,9 +201,7 @@ const Header = () => {
 
                   {item.dropdown && (
                     <button
-                      onClick={() =>
-                        setMobileProjectOpen(!mobileProjectOpen)
-                      }
+                      onClick={() => setMobileProjectOpen(!mobileProjectOpen)}
                       className="text-xl"
                     >
                       {mobileProjectOpen ? "▲" : "▼"}
@@ -256,14 +240,8 @@ const Header = () => {
       {/* SLIDE DOWN ANIMATION */}
       <style>{`
         @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-slideDown {
           animation: slideDown 0.3s ease-out forwards;

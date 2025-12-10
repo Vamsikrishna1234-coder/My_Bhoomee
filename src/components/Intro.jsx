@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import img1 from "../assets/images/Orr road.jpeg"
+import img1 from "../assets/images/Orr road.jpeg";
 
 export default function NatureStatsSection() {
   const [offset, setOffset] = useState(0);
 
-  // Parallax Movement
+  // Parallax
   useEffect(() => {
     const handleScroll = () => setOffset(window.scrollY * 0.15);
     window.addEventListener("scroll", handleScroll);
@@ -14,35 +14,47 @@ export default function NatureStatsSection() {
   return (
     <section className="relative bg-[#F8F2E9] py-10 overflow-hidden">
 
-      {/* Grid Layout Like Screenshot */}
-      <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-0 px-6 relative z-10">
+      {/* GRID — NOW TABLET WILL ALSO BE ONE COLUMN */}
+      <div className="
+        max-w-[1500px] mx-auto 
+        grid grid-cols-1 lg:grid-cols-2 
+        items-center gap-0 
+        px-6 relative z-10
+      ">
 
-        {/* LEFT FULL HEIGHT IMAGE */}
-        <div className="w-[650px] h-[600px] md:h-[750px] overflow-hidden  shadow-md">
+        {/* LEFT IMAGE */}
+        <div
+          className="
+            w-full
+            h-[260px]        /* mobile */
+            sm:h-[350px]     /* tablet */
+            lg:w-[650px]     /* desktop original width */
+            lg:h-[600px]     /* desktop original height */
+            xl:h-[750px]
+            overflow-hidden shadow-md
+          "
+        >
           <img
             src={img1}
+            loading="lazy"
             className="w-full h-full object-cover"
             alt="Nature"
           />
         </div>
 
-        {/* RIGHT SIDE — Your Data in Elegant Layout */}
-        <div className="px-0 md:px-16 py-10">
-          
-          {/* Decorative Icon */}
+        {/* RIGHT CONTENT */}
+        <div className="px-0 lg:px-16 py-10">
+
           <div className="flex mb-4">
             <span className="text-4xl">✦</span>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-5xl md:text-6xl font-serif italic text-black mb-10">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-black mb-10">
             A Lifestyle Inspired by Nature
           </h2>
 
-          {/* Stats Section */}
-          <div className="space-y-10 text-black-600">
+          <div className="space-y-10">
 
-            {/* Block 1 */}
             <div>
               <h3 className="text-4xl font-bold text-[#2F3D36]">25 Acre</h3>
               <p className="text-xl text-black">Premium Villa Project</p>
@@ -51,7 +63,6 @@ export default function NatureStatsSection() {
               </p>
             </div>
 
-            {/* Block 2 */}
             <div>
               <h3 className="text-4xl font-bold text-[#2F3D36]">80%</h3>
               <p className="text-xl text-black">Green Space</p>
@@ -60,7 +71,6 @@ export default function NatureStatsSection() {
               </p>
             </div>
 
-            {/* Block 3 */}
             <div>
               <h3 className="text-4xl font-bold text-[#2F3D36]">1 Hr</h3>
               <p className="text-xl text-black">From Hyderabad</p>
@@ -69,7 +79,6 @@ export default function NatureStatsSection() {
               </p>
             </div>
 
-            {/* Block 4 */}
             <div>
               <h3 className="text-4xl font-bold text-[#2F3D36]">25+</h3>
               <p className="text-xl text-black">Luxury Amenities</p>
