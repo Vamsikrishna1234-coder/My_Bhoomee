@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/images/logo mybhumee.png";
+import logo from "../assets/images/logo mybhumee white.png"; // 👈 USE WHITE LOGO FOR BLACK NAVBAR
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [projectOpen, setProjectOpen] = useState(false);
   const [mobileProjectOpen, setMobileProjectOpen] = useState(false);
 
@@ -16,7 +15,6 @@ const Header = () => {
   const navItems = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/aboutus" },
-
     {
       label: "Our Projects",
       to: "/projects",
@@ -27,7 +25,6 @@ const Header = () => {
         { label: "Bali Harmony", to: "/projects/baliharmony" },
       ],
     },
-
     { label: "Gallery", to: "/gallery" },
     { label: "Blogs", to: "/blogs" },
     { label: "Contact Us", to: "/contact" },
@@ -44,7 +41,6 @@ const Header = () => {
         setUnderlineStyle({ width: 0, left: 0 });
         return;
       }
-
       const navRect = navRef.current.getBoundingClientRect();
       const linkRect =
         navRef.current.children[activeIndex].getBoundingClientRect();
@@ -60,39 +56,26 @@ const Header = () => {
     return () => window.removeEventListener("resize", animateUnderline);
   }, [location.pathname, activeIndex]);
 
-  // scroll effect
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // open desktop dropdown
   const openProjects = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setProjectOpen(true);
   };
 
-  // close desktop dropdown smoothly
   const closeProjects = () => {
     closeTimer.current = setTimeout(() => setProjectOpen(false), 180);
   };
 
   return (
     <header
-      className={`
+      className="
         fixed top-0 left-0 w-full z-50
-        transition-all duration-500
-        ${
-          isScrolled
-            ? "bg-white/30 backdrop-blur-lg shadow-[0_2px_10px_rgba(0,0,0,0.15)]"
-            : "bg-transparent"
-        }
-      `}
+        bg-black shadow-lg    /* 🔥 ALWAYS BLACK NAVBAR */
+      "
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
 
+          {/* LOGO */}
           <Link to="/">
             <img src={logo} alt="MyBhumi Logo" className="h-14 lg:h-[72px]" />
           </Link>
@@ -111,13 +94,17 @@ const Header = () => {
               >
                 <Link
                   to={item.to}
-                  className="font-semibold text-[17px] text-black hover:text-gray-700 !no-underline flex items-center gap-1"
+                  className="
+                    font-semibold text-[17px] text-white 
+                    hover:text-gray-300 
+                    !no-underline flex items-center gap-1
+                  "
                 >
                   {item.label}
 
                   {item.dropdown && (
                     <span
-                      className={`transition-transform duration-300 text-[16px] ${
+                      className={`transition-transform duration-300 text-[16px] text-white ${
                         projectOpen ? "rotate-180" : ""
                       }`}
                     >
@@ -126,14 +113,14 @@ const Header = () => {
                   )}
                 </Link>
 
-                {/* FIXED DROPDOWN CLOSE LOGIC HERE */}
+                {/* DESKTOP DROPDOWN */}
                 {item.dropdown && projectOpen && (
                   <div
                     className="
                       absolute left-0 w-64 mt-4 py-4 
-                      rounded-xl backdrop-blur-xl bg-white/20
-                      shadow-[0_8px_30px_rgba(0,0,0,0.2)]
-                      border border-white/30 animate-slideDown
+                      rounded-xl bg-black/90 backdrop-blur-xl
+                      shadow-[0_8px_30px_rgba(0,0,0,0.4)]
+                      border border-gray-600 animate-slideDown
                     "
                     style={{ top: "100%" }}
                     onMouseEnter={openProjects}
@@ -143,10 +130,10 @@ const Header = () => {
                       <Link
                         key={i}
                         to={sub.to}
-                        onClick={() => setProjectOpen(false)}  // ✔ dropdown closes
+                        onClick={() => setProjectOpen(false)}
                         className="
-                          block px-5 py-3 text-black font-medium 
-                          hover:bg-white/40 rounded-lg transition !no-underline
+                          block px-5 py-3 text-white font-medium 
+                          hover:bg-white/30 rounded-lg transition !no-underline
                         "
                       >
                         {sub.label}
@@ -157,9 +144,9 @@ const Header = () => {
               </div>
             ))}
 
-            {/* UNDERLINE EFFECT */}
+            {/* UNDERLINE — now WHITE */}
             <span
-              className="absolute bottom-0 h-[2px] bg-black rounded-full transition-all duration-300"
+              className="absolute bottom-0 h-[2px] bg-white rounded-full transition-all duration-300"
               style={{
                 left: underlineStyle.left,
                 width: underlineStyle.width,
@@ -167,10 +154,13 @@ const Header = () => {
               }}
             />
 
-            {/* BUTTON */}
+            {/* CTA BUTTON */}
             <Link
               to="/contact"
-              className="ml-4 px-4 py-2 bg-black text-white rounded-full font-semibold !no-underline"
+              className="
+                ml-4 px-4 py-2 bg-white text-black 
+                rounded-full font-semibold !no-underline
+              "
             >
               Enquiry Now
             </Link>
@@ -179,7 +169,7 @@ const Header = () => {
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-black text-5xl"
+            className="lg:hidden text-white text-5xl"
           >
             {isOpen ? "✖" : "☰"}
           </button>
@@ -187,14 +177,14 @@ const Header = () => {
 
         {/* MOBILE MENU */}
         {isOpen && (
-          <nav className="lg:hidden bg-white shadow-xl py-4 space-y-2">
+          <nav className="lg:hidden bg-black shadow-xl py-4 space-y-2">
             {navItems.map((item, index) => (
               <div key={index}>
-                <div className="flex justify-between items-center px-4 py-2 text-black font-medium hover:bg-gray-100">
+                <div className="flex justify-between items-center px-4 py-2 text-white font-medium hover:bg-gray-800">
                   <Link
                     to={item.to}
                     onClick={() => setIsOpen(false)}
-                    className="!no-underline"
+                    className="!no-underline text-white"
                   >
                     {item.label}
                   </Link>
@@ -202,21 +192,22 @@ const Header = () => {
                   {item.dropdown && (
                     <button
                       onClick={() => setMobileProjectOpen(!mobileProjectOpen)}
-                      className="text-xl"
+                      className="text-xl text-white"
                     >
                       {mobileProjectOpen ? "▲" : "▼"}
                     </button>
                   )}
                 </div>
 
+                {/* Mobile Dropdown */}
                 {item.dropdown && mobileProjectOpen && (
-                  <div className="ml-6 bg-gray-50 rounded-lg">
+                  <div className="ml-6 bg-gray-900 rounded-lg">
                     {item.dropdown.map((sub, i) => (
                       <Link
                         key={i}
                         to={sub.to}
                         onClick={() => setIsOpen(false)}
-                        className="block px-4 py-2 text-black hover:bg-gray-200 !no-underline"
+                        className="block px-4 py-2 text-white hover:bg-gray-700 !no-underline"
                       >
                         {sub.label}
                       </Link>
@@ -229,7 +220,7 @@ const Header = () => {
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="block mx-4 mt-3 text-center px-4 py-2 bg-black text-white rounded-full font-semibold !no-underline"
+              className="block mx-4 mt-3 text-center px-4 py-2 bg-white text-black rounded-full font-semibold !no-underline"
             >
               Enquiry Now
             </Link>

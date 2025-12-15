@@ -18,6 +18,7 @@ const AmenitiesSection = () => {
     "Wooden Villa Amenities",
     "Kerala Manduva Amenities",
     "Glass Villa Amenities",
+    "Bali Harmony Amenities",
   ];
 
   // AMENITIES DATA
