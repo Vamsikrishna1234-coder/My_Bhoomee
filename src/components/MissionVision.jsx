@@ -2,15 +2,15 @@ import React from "react";
 
 const MissionVision = () => {
   return (
-    <section className="py-16 px-6 bg-[#F8F2E9] text-black">
+    <section className="py-16 px-6 bg-white text-black">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 !text-[#11689B] animated-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-2 text-black animated-text">
             Our Mission & Vision
           </h2>
-          <div className="w-20 h-1 bg-[#11689B] mx-auto"></div>
+          <div className="w-20 h-1 bg-black mx-auto"></div>
         </div>
 
         {/* Two Columns */}
@@ -18,7 +18,7 @@ const MissionVision = () => {
 
           {/* Mission */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 !text-[#11689B] animated-text">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black animated-text">
               Our Mission
             </h3>
 
@@ -37,7 +37,7 @@ const MissionVision = () => {
               the buying journey.
             </p>
 
-            <ul className="text-gray-900 space-y-2 text-lg">
+            <ul className="text-black space-y-2 text-lg">
               <li className="animated-list-item">• 100% Legal & Verified Properties</li>
               <li className="animated-list-item">• Complete Documentation Support</li>
               <li className="animated-list-item">• Customer-First Approach</li>
@@ -46,7 +46,7 @@ const MissionVision = () => {
 
           {/* Vision */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 !text-[#11689B] animated-text">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black animated-text">
               Our Vision
             </h3>
 
@@ -64,7 +64,7 @@ const MissionVision = () => {
               Our vision is to create remarkable developments that grow in value and serve generations to come.
             </p>
 
-            <ul className="text-gray-900 space-y-2 text-lg">
+            <ul className="text-black space-y-2 text-lg">
               <li className="animated-list-item">• Build 100+ Communities by 2030</li>
               <li className="animated-list-item">• Eco-Friendly & Future-Proof Developments</li>
               <li className="animated-list-item">• Leading Customer Satisfaction & Trust</li>
@@ -74,24 +74,22 @@ const MissionVision = () => {
         </div>
       </div>
 
-      {/* Hover Animations */}
+      {/* Animations (movement only, no color change) */}
       <style>{`
         .animated-text {
           display: inline-block;
-          transition: transform 0.35s ease, color 0.3s ease;
+          transition: transform 0.35s ease;
         }
         .animated-text:hover {
           transform: translateY(-4px);
-          color: #11689B;
         }
 
         .animated-list-item {
           display: block;
-          transition: transform 0.35s ease, color 0.3s ease;
+          transition: transform 0.35s ease;
         }
         .animated-list-item:hover {
           transform: translateY(-4px);
-          color: #11689B;
         }
       `}</style>
     </section>

@@ -31,7 +31,7 @@ export default function NivritiStyleGallery() {
   };
 
   return (
-    <section className="bg-[#F8F2E9] py-14">
+    <section className="bg-white py-14">
       
       {/* HEADING */}
       <h2 className="text-center text-3xl md:text-4xl font-serif italic mb-10">

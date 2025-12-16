@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import home1 from "../assets/images/home1.jpg";
+import home1 from "../assets/images/bannerhero1.jpg";
 import home2 from "../assets/images/home2.jpg";
 import home3 from "../assets/images/home5.jpg";
 import home4 from "../assets/images/home4.jpg";

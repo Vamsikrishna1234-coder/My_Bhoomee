@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";   // <-- Added for navigation
+import { Link } from "react-router-dom";
 
 import img1 from "../assets/images/wooden/wooden-villa.jpg";
 import img2 from "../assets/images/glassvilla/glass villa2.jpg";
@@ -18,28 +18,30 @@ export default function AboutCircleSection() {
   }, []);
 
   return (
-    <section className="bg-[#F8F2E9] py-8 md:py-12 px-4 md:px-12">
-      
+    <section className="bg-white py-8 md:py-12 px-4 md:px-12">
+
       {/* HEADING */}
       <div className="text-center mb-3 md:mb-5">
-        <h3 className="text-2xl md:text-5xl font-bold !text-[#11689B] tracking-wide">
+        <h3 className="text-2xl md:text-5xl font-bold text-black tracking-wide">
           ABOUT US
         </h3>
 
-        <h2 className="text-lg md:text-2xl text-black-600 font-medium mt-1 md:mt-2">
+        <h2 className="text-lg md:text-2xl text-black font-medium mt-1 md:mt-2">
           Premium Villas in Moinabad with Modern Creation
         </h2>
       </div>
 
-      {/* GRID — Tablet = ONE COLUMN, Desktop = TWO COLUMNS */}
+      {/* GRID */}
       <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
 
-        {/* IMAGE FIRST (Mobile + Tablet) */}
+        {/* IMAGE */}
         <div className="flex justify-center items-center w-full">
-          <div className="
-            w-full max-w-[360px] sm:max-w-[420px] md:max-w-[520px]
-            h-[300px] sm:h-[380px] md:h-[480px] lg:h-[520px]
-          ">
+          <div
+            className="
+              w-full max-w-[360px] sm:max-w-[420px] md:max-w-[520px]
+              h-[300px] sm:h-[380px] md:h-[480px] lg:h-[520px]
+            "
+          >
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
@@ -57,10 +59,10 @@ export default function AboutCircleSection() {
           </div>
         </div>
 
-        {/* CONTENT BELOW IMAGE IN MOBILE/TABLET */}
+        {/* CONTENT */}
         <div className="pr-0 lg:pr-6">
 
-          <h3 className="text-xl sm:text-2xl md:text-4xl font-bold text-black-600 leading-snug mb-3 md:mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-4xl font-bold text-black leading-snug mb-3 md:mb-4">
             Experience Modern Living at Its Finest
           </h3>
 
@@ -81,10 +83,10 @@ export default function AboutCircleSection() {
 
           <div className="flex gap-6 mt-5 md:mt-8">
 
-            {/* READ MORE BUTTON → Redirects to About Us Page */}
+            {/* READ MORE BUTTON */}
             <Link
               to="/aboutus"
-              className="px-6 py-3 md:px-8 md:py-3 bg-[#11689B] text-white rounded-full text-md md:text-lg shadow-md hover:scale-105 transition-all inline-block !no-underline"
+              className="px-6 py-3 md:px-8 md:py-3 bg-black text-white rounded-full text-md md:text-lg shadow-md hover:scale-105 transition-all inline-block !no-underline"
             >
               Read More...
             </Link>

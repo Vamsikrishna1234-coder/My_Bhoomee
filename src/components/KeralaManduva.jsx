@@ -11,7 +11,6 @@ const KeralaManduva = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [zoomedImage, setZoomedImage] = useState(null);
 
-  // Auto image slideshow
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % villaImages.length);
@@ -20,44 +19,36 @@ const KeralaManduva = () => {
   }, []);
 
   return (
-    <div className="bg-[#F8F2E9] min-h-screen">
+    <div className="bg-white min-h-screen">
 
       {/* MAIN SECTION */}
-      <section className="relative py-28 overflow-hidden bg-[#F8F2E9]">
+      <section className="relative py-28 bg-white">
 
-        {/* Soft Glows */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFD6A5]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFB347]/20 rounded-full blur-3xl"></div>
-
-        <div className="container mx-auto px-6 lg:px-20 relative z-10">
+        <div className="container mx-auto px-6 lg:px-20">
 
           {/* HEADER */}
           <div className="text-center max-w-5xl mx-auto mb-24">
+            <span className="inline-block px-6 py-3 border border-black rounded-full mb-8 text-sm font-semibold tracking-widest uppercase text-black">
+              Traditional Luxury Living
+            </span>
 
-            <div className="inline-block px-6 py-3 bg-[#11829B] rounded-full mb-8 border border-[#FFD6A5]/40">
-              <span className="text-white font-semibold text-sm tracking-widest uppercase">
-                Traditional Luxury Living
-              </span>
-            </div>
-
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 text-[#11829B]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 text-black">
               Kerala Manduva House
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto font-light">
-              Experience timeless architecture with{" "}
-              <span className="text-[#11829B] font-semibold">
-                MY BHOOMEE SPACE INFRA DEVELOPERS 
-              </span> — where Kerala heritage meets modern comfort.
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Experience timeless Kerala architecture blended with modern comfort,
+              designed to bring natural light, ventilation, and cultural harmony
+              into everyday living.
             </p>
           </div>
 
-          {/* IMAGE SHOWCASE (NO DARK OVERLAY) */}
+          {/* IMAGE SHOWCASE */}
           <div className="grid md:grid-cols-3 gap-8 mb-24">
             {villaImages.map((img, index) => (
               <div
                 key={index}
-                className="relative rounded-3xl overflow-hidden border-[6px] border-white shadow-2xl transform hover:scale-[1.03] transition-all duration-700 cursor-pointer bg-white"
+                className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition cursor-pointer bg-white"
                 onClick={() => setZoomedImage(img)}
               >
                 <img
@@ -69,24 +60,30 @@ const KeralaManduva = () => {
             ))}
           </div>
 
-          {/* DESCRIPTION SECTION */}
+          {/* DESCRIPTION + FLOOR PLANS */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-32">
 
+            {/* LEFT CONTENT */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#11829B]">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
                 Elegance Rooted in Tradition
               </h2>
 
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 text-justify">
+              <p className="text-lg text-gray-700 leading-relaxed mb-8 text-justify">
                 Kerala Manduva House reflects timeless South Indian architecture
-                with serene courtyards, intricate wooden detailing, and 
-                sustainable materials. Traditional craftsmanship blends with
-                spacious modern living to create a peaceful sanctuary filled with 
-                natural ventilation, sunlight, and cultural richness.
+                with serene courtyards, intricate wooden detailing, and sustainable
+                materials. Traditional craftsmanship blends seamlessly with modern
+                living, creating a calm and culturally rich home environment.
+                The central open-to-sky manduva enhances natural ventilation and daylight,
+                fostering a harmonious indoor–outdoor connection throughout the home.
+                Handcrafted wooden pillars and sloping tiled roofs echo heritage aesthetics,
+                while thoughtfully planned interiors ensure comfort and functionality.
+                Every space is designed to promote family bonding, privacy, and serenity,
+                making the home both spiritually grounding and practically modern.
               </p>
 
               <ul className="space-y-3 text-lg text-gray-700">
-                <li>📍 <strong>Location:</strong> Moinabad - Hyderabad</li>
+                <li>📍 <strong>Location:</strong> Moinabad – Hyderabad</li>
                 <li>🏠 <strong>Type:</strong> 3 BHK Kerala Style Villa</li>
                 <li>🌳 <strong>Plot Size:</strong> 900 Sq. Yards</li>
                 <li>🏗️ <strong>Built-up Area:</strong> 1800 Sq. Ft</li>
@@ -96,43 +93,30 @@ const KeralaManduva = () => {
 
             {/* FLOOR PLANS */}
             <div className="space-y-10">
-
-              {/* EAST PLAN */}
-              <div
-                className="relative rounded-xl overflow-hidden shadow-2xl border-[6px] border-white bg-white cursor-pointer"
-                onClick={() => setZoomedImage(eastPlan)}
-              >
-                <img
-                  src={eastPlan}
-                  alt="East Facing Plan"
-                  className="w-full h-[350px] object-contain p-4"
-                />
-                <div className="absolute bottom-4 right-4 bg-[#11829B] text-white px-5 py-2 rounded-xl font-semibold shadow-lg">
-                  East Facing – 3 BHK
-                </div>
-              </div>
-
-              {/* WEST PLAN */}
-              <div
-                className="relative rounded-xl overflow-hidden shadow-2xl border-[6px] border-white bg-white cursor-pointer"
-                onClick={() => setZoomedImage(westPlan)}
-              >
-                <img
-                  src={westPlan}
-                  alt="West Facing Plan"
-                  className="w-full h-[350px] object-contain p-4"
-                />
-                <div className="absolute bottom-4 right-4 bg-[#11829B] text-white px-5 py-2 rounded-xl font-semibold shadow-lg">
-                  West Facing – 3 BHK
-                </div>
-              </div>
-
+              {[{ img: eastPlan, label: "East Facing – 3 BHK" }, { img: westPlan, label: "West Facing – 3 BHK" }].map(
+                (plan, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition cursor-pointer bg-white"
+                    onClick={() => setZoomedImage(plan.img)}
+                  >
+                    <img
+                      src={plan.img}
+                      alt={plan.label}
+                      className="w-full h-[350px] object-contain p-4"
+                    />
+                    <div className="px-4 py-3 text-center font-semibold text-black border-t border-gray-200">
+                      {plan.label}
+                    </div>
+                  </div>
+                )
+              )}
             </div>
           </div>
 
           {/* AMENITIES */}
-          <div className="bg-white border border-[#FFD6A5] rounded-3xl p-10 shadow-lg">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-[#11829B]">
+          <div className="bg-white border border-gray-200 rounded-3xl p-10 shadow-lg">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-black">
               Premium Amenities
             </h2>
 
@@ -161,7 +145,7 @@ const KeralaManduva = () => {
           >
             <div className="relative max-w-6xl w-full">
               <button
-                className="absolute top-4 right-4 text-white text-3xl font-bold bg-black/50 px-3 py-1 rounded-full hover:bg-black"
+                className="absolute top-4 right-4 text-white text-3xl font-bold bg-black/60 px-3 py-1 rounded-full"
                 onClick={() => setZoomedImage(null)}
               >
                 ×
@@ -170,7 +154,7 @@ const KeralaManduva = () => {
               <img
                 src={zoomedImage}
                 alt="Zoomed View"
-                className="w-full h-auto max-h-[90vh] object-contain rounded-2xl bg-white shadow-2xl"
+                className="w-full max-h-[90vh] object-contain rounded-2xl bg-white shadow-2xl"
               />
             </div>
           </div>

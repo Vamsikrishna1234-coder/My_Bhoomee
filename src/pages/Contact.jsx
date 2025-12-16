@@ -30,10 +30,10 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative bg-[#F8F2E9]">
+    <section className="relative bg-white">
 
       {/* ⭐ TOP BANNER SECTION */}
-      <div className="pt-20 relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+      <div className="pt-20 relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
         <img
           src={bannerImg}
           className="w-full h-full object-cover"
@@ -69,7 +69,7 @@ const Contact = () => {
 
             <ul className="space-y-5 text-gray-700">
               <li className="flex gap-3">
-                <FaMapMarkerAlt className="text-[#11689B] text-xl mt-1" />
+                <FaMapMarkerAlt className="text-black text-xl mt-1" />
                 <p>
                   <strong>Office Address</strong><br />
                   MyBhumi Real Estate<br />
@@ -79,21 +79,21 @@ const Contact = () => {
               </li>
 
               <li className="flex items-center gap-3">
-                <FaPhoneAlt className="text-[#11689B] text-xl" />
-                <a href="tel:+918123456789" className="text-[#11689B] no-underline">
+                <FaPhoneAlt className="text-black text-xl" />
+                <a href="tel:+918123456789" className="text-black !no-underline">
                   +91 81234 56789
                 </a>
               </li>
 
               <li className="flex items-center gap-3">
-                <FaEnvelope className="text-[#11689B] text-xl" />
-                <a href="mailto:office@mybhumi.com" className="text-[#11689B] no-underline">
+                <FaEnvelope className="text-black text-xl" />
+                <a href="mailto:office@mybhumi.com" className="text-black !no-underline">
                   office@mybhumi.com
                 </a>
               </li>
 
               <li className="flex items-center gap-3">
-                <FaClock className="text-[#11689B] text-xl" />
+                <FaClock className="text-black text-xl" />
                 <p>
                   Mon–Sat: 9AM – 6PM<br />
                   Sunday: Closed
@@ -117,7 +117,7 @@ const Contact = () => {
 
           {/* RIGHT FORM */}
           <div className="bg-white rounded-3xl shadow-lg p-10 border border-gray-200">
-            <h3 className="text-3xl font-semibold text-[#11689B] mb-6">
+            <h3 className="text-3xl font-semibold text-black mb-6">
               Send Us a Message
             </h3>
 
@@ -174,7 +174,7 @@ const Contact = () => {
                 className={`w-full py-3 rounded-md text-white font-semibold transition ${
                   sending
                     ? "bg-[#0f5c89]/60 cursor-not-allowed"
-                    : "bg-[#11689B] hover:bg-[#0f5c89]"
+                    : "bg-black hover:bg-[#0f5c89]"
                 }`}
               >
                 {sending ? "Sending..." : "Send Message"}

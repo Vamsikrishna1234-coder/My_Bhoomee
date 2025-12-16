@@ -1,5 +1,4 @@
 import React from "react";
-import Fruits from "../../components/Fruits";
 import BaliHarmony from "../../components/BaliHarmony";
 
 // Hero Image (make sure this file exists)
@@ -9,7 +8,7 @@ const BaliHarmonyPage = () => {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
-      <section className="relative w-full h-[80vh] flex items-center justify-center">
+      <section className="relative w-full h-[90vh] flex items-center justify-center">
 
         {/* Background Image */}
         <img
@@ -30,8 +29,6 @@ const BaliHarmonyPage = () => {
         </div>
       </section>
 
-      {/* ================= FRUITS SECTION ================= */}
-      <Fruits />
 
       {/* ================= FULL BALI HARMONY CONTENT ================= */}
       <BaliHarmony />

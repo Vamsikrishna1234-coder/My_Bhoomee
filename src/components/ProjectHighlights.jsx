@@ -1,222 +1,89 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import React from "react";
+import {
+  FaTree,
+  FaHouseUser,
+  FaSpa,
+  FaHome
+} from "react-icons/fa";
 
-import h1 from "../assets/images/wooden/wooden pool.jpg";
-import h2 from "../assets/images/manduva/kerala manduva2.jpg";
-import h3 from "../assets/images/wooden/wooden natural .jpg";
-import h4 from "../assets/images/glassvilla/glass villa.jpg";
-import { Link } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const ProjectHighlights = () => {
-  const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
-
-  const cards = [
+const VillaConcepts = () => {
+  const villas = [
     {
-      image: h1,
-      title1: "ACRES",
-      value1: "25+ Acres Gated Community",
-      title2: "VILLAS",
-      value2: "150 Luxury Villas",
+      icon: <FaTree size={36} />,
+      title: "European Wooden Villas",
+      desc:
+        "Crafted with natural wood and inspired by classic European architecture, these villas offer warmth, sustainability, and timeless elegance. Ideal for those who value nature, comfort, and refined living.",
     },
     {
-      image: h2,
-      title1: "DESIGN",
-      value1: "Contemporary Tropical Architecture",
-      title2: "PLOTS",
-      value2: "400 - 1000 Sq.Yards",
+      icon: <FaHouseUser size={36} />,
+      title: "Glass Villas",
+      desc:
+        "Designed for contemporary lifestyles, glass villas feature expansive transparent walls that maximize daylight and openness. A perfect choice for modern living with uninterrupted views and luxury aesthetics.",
     },
     {
-      image: h3,
-      title1: "AMENITIES",
-      value1: "60+ World-Class Amenities",
-      title2: "CLUBHOUSE",
-      value2: "1,00,000 Sq.Ft.",
+      icon: <FaSpa size={36} />,
+      title: "Bali Harmony Villas",
+      desc:
+        "Inspired by Balinese philosophy, these villas emphasize balance, tranquility, and seamless indoor–outdoor living. A serene retreat surrounded by greenery and calming architectural elements.",
     },
     {
-      image: h4,
-      title1: "LOCATION",
-      value1: "Moinabad, Hyderabad",
-      title2: "CONNECTIVITY",
-      value2: "15 Min to Gachibowli",
+      icon: <FaHome size={36} />,
+      title: "Kerala Manduva Homes",
+      desc:
+        "Rooted in traditional Kerala design, Manduva homes feature central courtyards, natural ventilation, and sloped roofs, blending cultural heritage with modern-day comfort and sustainability.",
     },
   ];
 
-  useEffect(() => {
-    // Disable GSAP for mobile/tablet
-    if (window.innerWidth < 1024) return;
-
-    const ctx = gsap.context(() => {
-      gsap.set(cardRefs.current.slice(1), {
-        y: 120,
-        opacity: 0,
-        scale: 0.95,
-      });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=2000",
-          pin: sectionRef.current,
-          scrub: 1,
-        },
-      });
-
-      cardRefs.current.slice(1).forEach((card, i) => {
-        tl.to(
-          card,
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          i * 0.6
-        );
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-[#F8F2E9] overflow-hidden pb-0 lg:pb-32"
-    >
-      <div className="max-w-[1800px] mx-auto grid lg:grid-cols-2 px-6 lg:px-12 gap-12">
+    <section className="bg-white py-24">
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* LEFT PANEL */}
-        <div className="lg:sticky lg:top-24 self-start z-20 py-6 lg:py-16">
-          <p className="text-2xl text-[#11689B] font-bold tracking-widest mb-4">
-            PROJECT HIGHLIGHTS
+        {/* HEADER */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">
+            MyBhoomee Villa Concepts
+          </h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Discover thoughtfully curated villa concepts, each designed with a
+            distinct architectural identity to suit diverse lifestyles and
+            preferences.
           </p>
-
-          <div className="space-y-5 text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl">
-            <p>
-              Welcome to <span className="font-bold text-black">MyBhoomee</span> — where luxury meets serenity in the green
-              heart of Moinabad, Hyderabad.
-            </p>
-            <p>
-              Spread across 25+ acres, this exclusive gated villa community offers a lifestyle of
-              peace, privacy, and prestige.
-            </p>
-            <p>
-              Each villa blends contemporary tropical architecture with lush
-              landscapes and natural light.
-            </p>
-            <p>
-              Enjoy a 1,00,000 sq.ft. clubhouse, 60+ amenities, and a location 15 minutes from
-              Gachibowli & Financial District.
-            </p>
-            <p>Your dream home isn’t just a residence — it’s a legacy.</p>
-          </div>
-
-          <div className="mt-12">
-            <Link
-              to="/contact"
-              className="inline-block bg-[#11689B] hover:bg-[#b07d2a] text-white font-semibold text-base px-8 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-xl !no-underline"
-            >
-              Explore MyBhoomee
-            </Link>
-          </div>
         </div>
 
-        {/* RIGHT PANEL */}
-        <div className="relative lg:min-h-screen pb-10">
-
-          {/* 📱 MOBILE + TABLET (VERTICAL + 2 PER ROW ON TABLET) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="w-full h-[260px] sm:h-[300px] bg-white rounded-2xl overflow-hidden shadow-xl border"
-              >
-                <div
-                  className="h-full bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${card.image})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
-
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <div className="w-20 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-2">
-                          <span className="text-[10px] font-bold tracking-widest">
-                            {card.title1}
-                          </span>
-                        </div>
-                        <p className="text-sm font-semibold">{card.value1}</p>
-                      </div>
-
-                      <div>
-                        <div className="w-20 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-2">
-                          <span className="text-[10px] font-bold tracking-widest">
-                            {card.title2}
-                          </span>
-                        </div>
-                        <p className="text-sm font-semibold">{card.value2}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {villas.map((villa, index) => (
+            <div
+              key={index}
+              className="
+                bg-white
+                border border-black
+                rounded-2xl
+                p-8
+                text-center
+                flex flex-col
+                transition-all duration-300
+                hover:-translate-y-2
+                hover:shadow-xl
+                hover:border-black
+              "
+            >
+              {/* ICON */}
+              <div className="mb-6 flex justify-center text-black">
+                {villa.icon}
               </div>
-            ))}
-          </div>
 
-          {/* 🖥 DESKTOP STACKING (WITH GSAP ANIMATION) */}
-          <div className="hidden lg:block sticky top-24 h-screen flex items-start translate-y-40">
-            <div className="relative w-full max-w-8xl">
-              {cards.map((card, i) => (
-                <div
-                  key={i}
-                  ref={(el) => (cardRefs.current[i] = el)}
-                  className="absolute w-full h-[500px] bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
-                  style={{ top: `${i * 15}px`, zIndex: i + 1 }}
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${card.image})` }}
-                  />
+              {/* TITLE */}
+              <h3 className="text-xl font-bold text-black mb-4">
+                {villa.title}
+              </h3>
 
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
-
-                  <div className="relative z-10 h-full flex items-end p-10 lg:p-12">
-                    <div className="text-white max-w-lg">
-                      <div className="grid grid-cols-2 gap-10">
-                        <div>
-                          <div className="w-24 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
-                            <span className="text-xs font-bold tracking-widest">
-                              {card.title1}
-                            </span>
-                          </div>
-                          <p className="text-xl lg:text-2xl font-bold">{card.value1}</p>
-                        </div>
-
-                        <div>
-                          <div className="w-26 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3">
-                            <span className="text-xs font-bold tracking-widest">
-                              {card.title2}
-                            </span>
-                          </div>
-                          <p className="text-xl lg:text-2xl font-bold">{card.value2}</p>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              ))}
+              {/* DESCRIPTION */}
+              <p className="text-gray-700 text-sm leading-relaxed flex-grow">
+                {villa.desc}
+              </p>
             </div>
-          </div>
-
+          ))}
         </div>
 
       </div>
@@ -224,4 +91,4 @@ const ProjectHighlights = () => {
   );
 };
 
-export default ProjectHighlights;
+export default VillaConcepts;

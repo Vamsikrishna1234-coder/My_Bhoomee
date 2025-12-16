@@ -11,7 +11,6 @@ const GlassVilla = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [zoomedImage, setZoomedImage] = useState(null);
 
-  // Auto image carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % villaImages.length);
@@ -20,45 +19,36 @@ const GlassVilla = () => {
   }, []);
 
   return (
-    <div className="bg-[#F8F2E9] min-h-screen">
+    <div className="bg-white min-h-screen">
 
-      {/* MAIN SECTION WITHOUT BLACK GRADIENT */}
-      <section className="relative py-28 overflow-hidden bg-[#F8F2E9]">
+      <section className="relative py-28 bg-white">
+        <div className="container mx-auto px-6 lg:px-20">
 
-        {/* Decorative Glows */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFD6A5]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFB347]/20 rounded-full blur-3xl"></div>
-
-        <div className="container mx-auto px-6 lg:px-20 relative z-10">
-
-          {/* Header */}
+          {/* HEADER */}
           <div className="text-center max-w-5xl mx-auto mb-24">
-            <div className="inline-block px-6 py-3 bg-[#11829B] backdrop-blur-md rounded-full mb-8 border border-[#FFD6A5]/40">
-              <span className="text-white font-semibold text-sm tracking-widest uppercase">
-                Luxury Weekend Retreat
-              </span>
-            </div>
+            <span className="inline-block px-6 py-3 border border-black rounded-full mb-8 text-sm font-semibold tracking-widest uppercase text-black">
+              Luxury Weekend Retreat
+            </span>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-tight text-[#B7682F]">
+            <h1 className="text-4xl md:text-3xl lg:text-8xl font-medium mb-8 text-black">
               Luxury Weekend Glass Villa
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto font-light">
-              Elite Living
               Experience breathtaking transparency, modern aesthetics, and serene
               luxury crafted by{" "}
-              <span className="text-[#11829B] font-semibold">
-                MY BHOOMEE SPACE INFRA DEVELOPERS 
+              <span className="font-semibold text-black">
+                MY BHOOMEE SPACE INFRA DEVELOPERS
               </span>.
             </p>
           </div>
 
-          {/* Image Showcase – Clean, no dark overlay */}
+          {/* IMAGE GALLERY */}
           <div className="grid md:grid-cols-3 gap-8 mb-24">
             {villaImages.map((img, index) => (
               <div
                 key={index}
-                className="relative rounded-3xl overflow-hidden border-[6px] border-white shadow-2xl transform hover:scale-[1.03] transition-all duration-700 cursor-pointer bg-white"
+                className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-lg hover:scale-[1.03] transition-all duration-500 cursor-pointer bg-white"
                 onClick={() => setZoomedImage(img)}
               >
                 <img
@@ -70,10 +60,10 @@ const GlassVilla = () => {
             ))}
           </div>
 
-          {/* Description */}
+          {/* DESCRIPTION + FLOOR PLANS */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-32">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#C6782C]">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
                 Designed for the Visionaries
               </h2>
 
@@ -95,12 +85,11 @@ const GlassVilla = () => {
               </ul>
             </div>
 
-            {/* Floor Plans */}
             <div className="space-y-10">
 
               {/* Ground Floor */}
               <div
-                className="relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white bg-white cursor-pointer"
+                className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-white cursor-pointer"
                 onClick={() => setZoomedImage(groundPlan)}
               >
                 <img
@@ -108,14 +97,14 @@ const GlassVilla = () => {
                   alt="Ground Floor Plan"
                   className="w-full h-[350px] object-contain p-4"
                 />
-                <div className="absolute bottom-4 right-4 bg-[#11869B] text-white px-5 py-2 rounded-xl font-semibold shadow-lg">
+                <div className="absolute bottom-4 right-4 bg-black text-white px-5 py-2 rounded-xl font-semibold">
                   Ground Floor Plan – 3 BHK
                 </div>
               </div>
 
               {/* First Floor */}
               <div
-                className="relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white bg-white cursor-pointer"
+                className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 bg-white cursor-pointer"
                 onClick={() => setZoomedImage(firstPlan)}
               >
                 <img
@@ -123,16 +112,16 @@ const GlassVilla = () => {
                   alt="First Floor Plan"
                   className="w-full h-[350px] object-contain p-4"
                 />
-                <div className="absolute bottom-4 right-4 bg-[#11829B] text-white px-5 py-2 rounded-xl font-semibold shadow-lg">
+                <div className="absolute bottom-4 right-4 bg-black text-white px-5 py-2 rounded-xl font-semibold">
                   First Floor Plan – 3 BHK
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Amenities */}
-          <div className="bg-white border border-[#FFD6A5] rounded-3xl p-10 shadow-lg">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-[#C6782C]">
+          {/* AMENITIES */}
+          <div className="bg-white border border-gray-200 rounded-3xl p-10 shadow-md">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-black">
               Signature Amenities
             </h2>
 
@@ -153,7 +142,7 @@ const GlassVilla = () => {
           </div>
         </div>
 
-        {/* Zoom Modal */}
+        {/* ZOOM MODAL */}
         {zoomedImage && (
           <div
             className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-6"
@@ -161,7 +150,7 @@ const GlassVilla = () => {
           >
             <div className="relative max-w-6xl w-full">
               <button
-                className="absolute top-4 right-4 text-white text-3xl font-bold bg-black/50 px-3 py-1 rounded-full hover:bg-black"
+                className="absolute top-4 right-4 text-white text-3xl font-bold bg-black/60 px-3 py-1 rounded-full"
                 onClick={() => setZoomedImage(null)}
               >
                 ×
@@ -169,7 +158,7 @@ const GlassVilla = () => {
               <img
                 src={zoomedImage}
                 alt="Zoomed View"
-                className="w-full h-auto max-h-[90vh] object-contain rounded-2xl bg-white shadow-2xl"
+                className="w-full max-h-[90vh] object-contain rounded-2xl bg-white shadow-xl"
               />
             </div>
           </div>

@@ -38,15 +38,12 @@ const CoreValues = () => {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-[#F8F2E9]">
-      
-      
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section className="relative py-20 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-[#11689B] mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tight">
             Core Values
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -54,40 +51,51 @@ const CoreValues = () => {
           </p>
         </div>
 
-        {/* Grid Layout */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((val, index) => (
             <div key={index} className="group">
-              <div className="relative h-full">
-                <div className="bg-white rounded-3xl p-8 border-2 border-[#11689B]/10 shadow-xl hover:shadow-2xl hover:border-[#11689B]/30 transition-all duration-500 hover:scale-105 h-full flex flex-col">
-                  
+              <div className="h-full">
+                <div
+                  className="
+                    bg-white
+                    rounded-3xl
+                    p-8
+                    border border-gray-200
+                    shadow-md
+                    transition-all duration-300
+                    hover:shadow-lg
+                    hover:-translate-y-1
+                    h-full
+                    flex flex-col
+                  "
+                >
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#11689B] to-[#0e547f] flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform duration-500">
-                      <div className="text-white">{val.icon}</div>
+                    <div className="w-20 h-20 rounded-full border border-gray-300 flex items-center justify-center text-black">
+                      {val.icon}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-[#11689B] text-center mb-4">
+                  <h3 className="text-2xl font-bold text-black text-center mb-4">
                     {val.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 text-center leading-relaxed mb-6 flex-grow text-base">
+                  <p className="text-gray-700 text-center leading-relaxed mb-6 flex-grow text-base">
                     {val.description}
                   </p>
 
                   {/* Stat */}
-                  <div className="text-center pt-6 border-t-2 border-[#11689B]/10 mt-auto">
-                    <div className="text-5xl font-black text-[#11689B] mb-1">
+                  <div className="text-center pt-6 border-t border-gray-200 mt-auto">
+                    <div className="text-5xl font-black text-black mb-1">
                       {val.stat}
                     </div>
-                    <div className="text-sm font-semibold text-[#11689B] uppercase tracking-wider">
+                    <div className="text-sm font-semibold text-black uppercase tracking-wider">
                       {val.statLabel}
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

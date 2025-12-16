@@ -46,7 +46,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 bg-[#F8F2E9] overflow-hidden">
+    <section className="py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-6 text-center">
 
         {/* Heading */}

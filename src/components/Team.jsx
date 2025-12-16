@@ -27,25 +27,18 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="py-20 bg-[#F8F2E9]" id="team">
+    <section className="py-20 bg-white" id="team">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
         {/* Heading */}
-        <h2
-          className="text-4xl font-bold mb-4"
-          style={{
-            background: "linear-gradient(to right, #11689B, #0e5a87)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
+        <h2 className="text-4xl font-bold mb-4 text-black">
           Meet Our Team
         </h2>
         <p className="text-gray-700 mb-12">
           The passionate people behind Bhumi Real Estate.
         </p>
 
-        {/* Responsive Grid */}
+        {/* Grid */}
         <div
           className="
             grid 
@@ -71,52 +64,34 @@ export default function Team() {
                 ></div>
 
                 <div
-                  className="absolute left-0 top-0 w-[230px] h-full bg-[#11689B] text-white text-center box-border px-3 py-24 transform origin-left rotate-y-[-90deg] transition-all duration-[900ms] group-hover:rotate-y-0"
-                  style={{
-                    transformStyle: "preserve-3d",
-                  }}
+                  className="absolute left-0 top-0 w-[230px] h-full bg-black text-white text-center box-border px-3 py-24 transform origin-left rotate-y-[-90deg] transition-all duration-[900ms] group-hover:rotate-y-0"
+                  style={{ transformStyle: "preserve-3d" }}
                 >
                   <h1 className="text-xl font-bold leading-tight">
                     {member.name}
                     <br />
-                    <span className="text-sm text-gray-200">{member.role}</span>
+                    <span className="text-sm text-gray-300">
+                      {member.role}
+                    </span>
                   </h1>
+
                   <p className="mt-4 text-sm px-2">
                     Dedicated to creating premium, nature-connected living spaces.
                   </p>
-                  <ul className="flex justify-center gap-2 mt-6">
-                    <li>
-                      <a
-                        href="#"
-                        className="bg-white text-[#11689B] w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#0d4e72] hover:text-white transition"
-                      >
-                        <FaFacebookF />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="bg-white text-[#11689B] w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#0d4e72] hover:text-white transition"
-                      >
-                        <FaTwitter />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="bg-white text-[#11689B] w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#0d4e72] hover:text-white transition"
-                      >
-                        <FaLinkedinIn />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="bg-white text-[#11689B] w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#0d4e72] hover:text-white transition"
-                      >
-                        <FaInstagram />
-                      </a>
-                    </li>
+
+                  <ul className="flex justify-center gap-3 mt-6">
+                    {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map(
+                      (Icon, i) => (
+                        <li key={i}>
+                          <a
+                            href="#"
+                            className="bg-white text-black w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-900 hover:text-white transition"
+                          >
+                            <Icon />
+                          </a>
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>
@@ -128,10 +103,12 @@ export default function Team() {
                   alt={member.name}
                   className="w-full h-64 object-cover rounded-xl shadow-md"
                 />
-                <h3 className="text-xl font-semibold text-[#11689B] mt-3">
+                <h3 className="text-xl font-semibold text-black mt-3">
                   {member.name}
                 </h3>
-                <p className="text-gray-700 text-sm">{member.role}</p>
+                <p className="text-gray-700 text-sm">
+                  {member.role}
+                </p>
               </div>
 
             </div>

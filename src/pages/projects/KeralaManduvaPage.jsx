@@ -1,5 +1,4 @@
 import React from "react";
-import Fruits from "../../components/Fruits";
 import KeralaManduva from "../../components/KeralaManduva";
 
 // Hero image (make sure this image exists in your folder)
@@ -29,9 +28,6 @@ const KeralaManduvaPage = () => {
           
         </div>
       </section>
-
-      {/* ================= FRUITS SECTION ================= */}
-      <Fruits />
 
       {/* ================= FULL MANDUVA CONTENT ================= */}
       <KeralaManduva />

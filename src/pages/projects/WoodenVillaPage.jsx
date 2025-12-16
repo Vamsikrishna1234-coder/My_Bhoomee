@@ -3,13 +3,13 @@ import React from "react";
 // EXACT correct path for your hero image:
 import Banner1 from "../../assets/images/home3.jpg";
 import Woodenvilla from "../../components/Woodenvilla"
-import Fruits from "../../components/Fruits"
+
 
 const WoodenVillaPage = () => {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
-      <section className="relative w-full h-[70vh] flex items-center justify-center">
+      <section className="relative w-full h-[75vh] flex items-center justify-center">
 
         {/* Hero Image */}
         <img
@@ -28,8 +28,7 @@ const WoodenVillaPage = () => {
         </div>
       </section>
 
-      {/* Fruits Section */}
-      <Fruits />
+      
 
       {/* Wooden Villa Full Page Content */}
       <Woodenvilla />

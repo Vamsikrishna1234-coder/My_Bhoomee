@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "../../assets/images/home5.jpg"
-import Fruits from "../../components/Fruits";
 import GlassVilla from "../../components/GlassVilla";
 
 
@@ -28,9 +27,6 @@ const GlassVillaPage = () => {
         </div>
 
       </section>
-
-      {/* ================= FRUITS SECTION ================= */}
-      <Fruits />
 
       {/* ================= FULL GLASS VILLA CONTENT ================= */}
       <GlassVilla />

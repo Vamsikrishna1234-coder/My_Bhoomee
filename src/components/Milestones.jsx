@@ -41,15 +41,15 @@ export default function Milestones() {
   }, []);
 
   return (
-    <section className="py-20 bg-[#F8F2E9]">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Our Milestones
           </h2>
-          <p className="text-gray-600 text-lg max-w-xl mx-auto">
+          <p className="text-gray-700 text-lg max-w-xl mx-auto">
             Trusted by thousands of families with strong performance over years.
           </p>
         </div>
@@ -60,20 +60,20 @@ export default function Milestones() {
             <div
               key={i}
               className="
-                bg-white 
-                border border-gray-200 
-                shadow-md 
-                rounded-2xl 
-                p-8 
-                text-center 
-                transition-all duration-300 
-                hover:shadow-xl hover:-translate-y-1
+                bg-white
+                border border-gray-200
+                rounded-2xl
+                p-8
+                text-center
+                transition-all duration-300
+                hover:-translate-y-1
+                hover:shadow-lg
               "
             >
-              {/* Odometer Number */}
+              {/* Counter */}
               <div
                 ref={(el) => (counterRefs.current[i] = el)}
-                className="text-5xl font-extrabold text-[#11689B] tracking-wide odometer-digit"
+                className="text-5xl font-extrabold text-black tracking-wide"
               >
                 0
               </div>
@@ -87,7 +87,7 @@ export default function Milestones() {
 
       </div>
 
-      {/* Odometer smooth effect */}
+      {/* Smooth counter effect */}
       <style>{`
         .odometer-digit {
           display: inline-block;
