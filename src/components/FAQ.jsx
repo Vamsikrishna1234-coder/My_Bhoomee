@@ -1,99 +1,185 @@
+
 import React, { useState } from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { Plus, Minus, MessageCircle, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What services does MyBhumi offer?",
+    question: "What are the key highlights of the project?",
     answer:
-      "MyBhumi offers complete real estate solutions: buying, selling, renting, and investing in properties.\nWe handle everything from verified listings to site visits and negotiations.\nOur app connects you with trusted agents in Hyderabad for seamless deals.\nGet free consultancy on market trends and legal checks.\nDownload the app for instant property alerts and ROI calculators!",
+      "The project offers thoughtfully planned amenities like landscaped parks, wide roads, gated community security, and convenient proximity to key landmarks. Every development is designed to provide a comfortable lifestyle and a valuable investment opportunity.",
   },
   {
-    question: "Who can benefit from MyBhumi?",
+    question: "What types of properties are available?",
     answer:
-      "First-time home buyers get step-by-step guidance and loan assistance.\nSellers reach 1000+ buyers quickly with premium marketing tools.\nInvestors use our ROI analyzer to find high-return plots in Hyderabad.\nBuilders promote new projects to verified agents and NRIs.\nFamilies looking for ready-to-move flats enjoy virtual tours and EMI calculators.",
+      "Bhoomatha Group offers different property options based on project availability, including residential plots, apartments, villas, and premium residential developments to cater to different buyer requirements.",
   },
   {
-    question: "How is transparency ensured?",
+    question: "What documents should I check before buying a property?",
     answer:
-      "Every property is verified on-site by our experts—no fake listings!\nWe provide original documents, RERA details, and encumbrance certificates.\nFair pricing based on real-time market data and government rates.\nTrack your deal progress live on the app with updates from agents.\nZero hidden charges—full cost breakdown before you commit.",
+      "You should verify the legal approvals, land title documents, building permits (where applicable), property tax receipts, and RERA registration (where applicable). We also recommend consulting a qualified property lawyer before completing your purchase.",
   },
   {
-    question: "Do you help with loans & legal work?",
+    question: "Is Bhoomatha Group a good choice for property investment?",
     answer:
-      "Yes! We partner with SBI, HDFC, and ICICI for instant loan pre-approval.\nGet up to 90% funding with low-interest rates for Hyderabad properties.\nOur legal team handles registration, stamp duty, and title clearance.\nFree document verification to avoid disputes later.\nPost-purchase support includes mutation and possession handover.",
+      "Bhoomatha Group focuses on strategically located developments, quality infrastructure, and thoughtfully planned projects. Buyers can evaluate the location, connectivity, legal approvals, project details, and future development potential before making an investment decision.",
   },
   {
-    question: "Why choose MyBhumi over others?",
+    question: "How can I book a property or schedule a site visit?",
     answer:
-      "Tech-powered: Search 5000+ verified properties on our app in seconds.\n24/7 helpline with dedicated relationship managers for every client.\nNo brokerage fees for buyers—save lakhs on your dream home!\nLocal Hyderabad experts with 10+ years of market knowledge.\nJoin 1000+ happy families who found their perfect property hassle-free.",
+      "You can contact the Bhoomatha Group sales team through our website, phone, or enquiry form. Our team can help you understand available properties, pricing, project details, and arrange a site visit based on your requirements.",
   },
 ];
 
-export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(null);
+const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <section className="bg-white py-16 px-4">
-      <div className="max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#11689B] mb-10">
-          Frequently Asked Questions
-        </h2>
+    <section className="w-full bg-white px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
 
-        <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white border border-[#11689B]/30 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-start px-4 py-3 text-left focus:outline-none"
-              >
-                <span
-                  className="font-semibold text-gray-800 leading-tight pr-6 
-                  text-sm md:text-base lg:text-lg 
-                  line-clamp-2"
-                >
-                  {faq.question}
-                </span>
-                {openIndex === index ? (
-                  <ChevronUpIcon className="w-5 h-5 md:w-6 md:h-6 text-[#11689B] flex-shrink-0" />
-                ) : (
-                  <ChevronDownIcon className="w-5 h-5 md:w-6 md:h-6 text-[#11689B] flex-shrink-0" />
-                )}
-              </button>
+      <div className="mx-auto max-w-[1450px]">
 
-              <div
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="px-4 pb-4 text-sm md:text-base text-gray-600 leading-relaxed whitespace-pre-line">
-                  {faq.answer}
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Heading */}
+        <div className="mb-12 text-center">
+
+          
+
+          <h2 className="mt-5 text-3xl font-extrabold text-[#053279] sm:text-4xl lg:text-5xl">
+            Frequently Asked
+            <span className="text-[#FBBD23]"> Questions</span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+            Find answers to common questions about Bhoomatha Group,
+            our projects, property options, and investment process.
+          </p>
+
         </div>
 
-        <div className="text-center mt-10">
-          <p className="text-sm text-gray-600">
-            Still have questions?{" "}
+        {/* FAQ Layout */}
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.8fr_1.5fr] lg:gap-16">
+
+          {/* Left Information */}
+          <div className="rounded-2xl bg-[#053279] p-7 text-white sm:p-9">
+
+            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[#FBBD23] text-[#053279]">
+              <MessageCircle size={28} />
+            </div>
+
+            <h3 className="text-2xl font-bold leading-snug sm:text-3xl">
+              Need More
+              <span className="block text-[#FBBD23]">
+                Information?
+              </span>
+            </h3>
+
+            <p className="mt-5 text-sm leading-7 text-white/85">
+              Have questions about our projects or looking for the right
+              property? Our team is here to guide you through every step
+              of your property journey.
+            </p>
+
             <a
-              href="https://wa.me/916304445766?text=Hi%20Bhumi%20Realestate!%20I%20have%20a%20question%20about%20your%20projects."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#11689B] font-bold underline hover:text-[#0E5783]"
+              href="/contact"
+              className="mt-8 inline-flex items-center gap-3 rounded-lg bg-[#FBBD23] px-6 py-3 text-sm font-bold text-black transition-all duration-300 hover:bg-white !no-underline sm:text-base"
             >
-              Chat us now!
+              Contact Our Team
+              <span>→</span>
             </a>
-          </p>
+
+            <div className="mt-10 border-t border-white/20 pt-6">
+              <p className="text-xs uppercase tracking-widest text-[#FBBD23]">
+                Bhoomatha Group
+              </p>
+              <p className="mt-2 text-sm text-white/80">
+                Building Trust. Creating Landmarks.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Right FAQ Accordion */}
+          <div className="space-y-3">
+
+            {faqs.map((faq, index) => {
+              const isOpen = activeIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`overflow-hidden rounded-xl border transition-all duration-300 ${
+                    isOpen
+                      ? "border-[#FBBD23] shadow-[0_8px_25px_rgba(5,50,121,0.08)]"
+                      : "border-[#053279]/15"
+                  }`}
+                >
+
+                  {/* Question */}
+                  <button
+                    type="button"
+                    onClick={() => toggleFAQ(index)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6"
+                  >
+
+                    <div className="flex items-center gap-4">
+
+                      <span className="hidden text-sm font-bold text-[#FBBD23] sm:block">
+                        0{index + 1}
+                      </span>
+
+                      <span className="text-sm font-bold leading-6 text-[#053279] sm:text-base">
+                        {faq.question}
+                      </span>
+
+                    </div>
+
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                        isOpen
+                          ? "bg-[#FBBD23] text-[#053279]"
+                          : "bg-[#053279] text-white"
+                      }`}
+                    >
+                      {isOpen ? (
+                        <Minus size={18} />
+                      ) : (
+                        <Plus size={18} />
+                      )}
+                    </span>
+
+                  </button>
+
+                  {/* Answer */}
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="border-t border-[#053279]/10 px-5 pb-6 pt-4 sm:px-6 sm:pl-[4.25rem]">
+                        <p className="text-sm leading-7 text-gray-600">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              );
+            })}
+
+          </div>
+
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default FAQ;

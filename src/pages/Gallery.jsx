@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import Wooden1 from "../assets/images/wooden/wooden natural .jpg"
-import Wooden2 from "../assets/images/wooden/wooden interior.jpg"
-import Wooden3 from "../assets/images/wooden/wooden garden.jpg"
-import Wooden4 from "../assets/images/wooden/wooden pool.jpg"
-import Wooden5 from "../assets/images/wooden/wooden-villa.jpg"
-import Wooden6 from "../assets/images/wooden/wooden night.jpg"
-import Kerala1 from "../assets/images/manduva/kerala manduva1.jpg"
-import Kerala2 from "../assets/images/manduva/kerala manduva2.jpg"
-import Kerala3 from "../assets/images/manduva/kerala manduva3.jpg"
-import Kerala4 from "../assets/images/manduva/kerala manduva4.jpg"
-import Kerala5 from "../assets/images/manduva/Mandava exterior.jpg"
+
+
 import Glass1 from "../assets/images/glassvilla/glass villa.jpg"
 import Glass2 from "../assets/images/glassvilla/glass villa1.png"
 import Glass3 from "../assets/images/glassvilla/glass villa2.jpg"
@@ -24,24 +15,24 @@ const galleryData = [
     category: "Wooden Villa",
     key: "wooden-villa",
     images: [
-      { id: 1, src: Wooden1, alt: "Wooden Villa Front" },
-      { id: 2, src: Wooden2, alt: "Wooden Villa Interior" },
-      { id: 3, src: Wooden3, alt: "Wooden Villa Garden" },
-      { id: 4, src: Wooden4, alt: "Wooden Villa Pool" },
-      { id: 5, src: Wooden5, alt: "Wooden Villa Exterior" },
-      { id: 6, src: Wooden6, alt: "Wooden Villa Night" }
+      { id: 1, src: '#', alt: "Wooden Villa Front" },
+      { id: 2, src: '#', alt: "Wooden Villa Interior" },
+      { id: 3, src: '#', alt: "Wooden Villa Garden" },
+      { id: 4, src: '#', alt: "Wooden Villa Pool" },
+      { id: 5, src: '#', alt: "Wooden Villa Exterior" },
+      { id: 6, src: '#', alt: "Wooden Villa Night" }
     ],
   },
   {
     category: "Kerala Manduva",
     key: "kerala-manduva",
     images: [
-      { id: 7, src: Kerala1, alt: "Kerala Manduva Entrance" },
-      { id: 8, src: Kerala2, alt: "Kerala Manduva Courtyard" },
-      { id: 9, src: Kerala4, alt: "Kerala Manduva Poolside" },
-      { id: 10, src: Kerala3, alt: "Kerala Manduva Terrace" },
-      { id: 11, src: Kerala2, alt: "Kerala Manduva Interior" },
-      { id: 12, src: Kerala5, alt: "Kerala Manduva Garden" },
+      { id: 7, src: '#', alt: "Kerala Manduva Entrance" },
+      { id: 8, src: '#', alt: "Kerala Manduva Courtyard" },
+      { id: 9, src: '#', alt: "Kerala Manduva Poolside" },
+      { id: 10, src: '#', alt: "Kerala Manduva Terrace" },
+      { id: 11, src: '#', alt: "Kerala Manduva Interior" },
+      { id: 12, src: '#', alt: "Kerala Manduva Garden" },
     ],
   },
   {

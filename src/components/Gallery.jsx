@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // IMPORT YOUR IMAGES
-import img1 from "../assets/images/wooden/wooden natural .jpg";
-import img2 from "../assets/images/wooden/wooden garden.jpg";
+
 import img3 from "../assets/images/manduva/kerala manduva2.jpg";
 import img4 from "../assets/images/manduva/kerala manduva3.jpg";
 import img5 from "../assets/images/glassvilla/glass villa1.png";
 import img6 from "../assets/images/glassvilla/glass villa2.jpg";
 
 const sets = [
-  [img1, img2, img3],
+  [ img3],
   [img4, img5, img6],
 ];
 

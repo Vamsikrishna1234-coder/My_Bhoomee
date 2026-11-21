@@ -1,9 +1,9 @@
 import React from "react";
 import Banner from "../../assets/images/home5.jpg"
-import GlassVilla from "../../components/GlassVilla";
+import SugundhaMeadows from "../../components/Sugundha-Meadows";
 
 
-const GlassVillaPage = () => {
+const SugundhaMeadowsPage = () => {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
@@ -28,10 +28,10 @@ const GlassVillaPage = () => {
 
       </section>
 
-      {/* ================= FULL GLASS VILLA CONTENT ================= */}
-      <GlassVilla />
+      {/* ================= FULL SUGUNDHA MEADOWS CONTENT ================= */}
+      <SugundhaMeadows />
     </>
   );
 };
 
-export default GlassVillaPage;
+export default SugundhaMeadowsPage;

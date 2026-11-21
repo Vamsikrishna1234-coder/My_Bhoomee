@@ -1,10 +1,10 @@
 import React from "react";
-import BaliHarmony from "../../components/BaliHarmony";
+import PurnaSai from "../../components/Purna-Sai";
 
 // Hero Image (make sure this file exists)
 import Banner from "../../assets/images/bali housebanner.jpg";
 
-const BaliHarmonyPage = () => {
+const PurnaSaiPage = () => {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
@@ -13,7 +13,7 @@ const BaliHarmonyPage = () => {
         {/* Background Image */}
         <img
           src={Banner}
-          alt="Bali Harmony Banner"
+          alt="Purna Sai Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -23,17 +23,17 @@ const BaliHarmonyPage = () => {
         {/* Text */}
         <div className="relative text-center px-6">
           <h1 className="text-white text-4xl lg:text-6xl font-bold">
-            Bali Harmony
+            Purna Sai
           </h1>
           
         </div>
       </section>
 
 
-      {/* ================= FULL BALI HARMONY CONTENT ================= */}
-      <BaliHarmony />
+      {/* ================= FULL PURNA SAI CONTENT ================= */}
+      <PurnaSai />
     </>
   );
 };
 
-export default BaliHarmonyPage;
+export default PurnaSaiPage;

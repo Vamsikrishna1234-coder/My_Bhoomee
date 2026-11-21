@@ -6,15 +6,15 @@ import ScrollToTop from './components/ScrollToTop.jsx';
 import Header from './components/Header.jsx';
 import SocialBar from './components/SocialMediabar.jsx';
 import Footer from './components/Footer.jsx';
-import ChatAssistant from "./components/ChatAssistant";
 import SiteVisit from './components/SiteVisit.jsx';
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import Projects from "./pages/projects/Projects";
-import Woodenvilla from './pages/projects/WoodenVillaPage.jsx';
-import GlassVilla from "./pages/projects/GlassVillaPage.jsx";
-import KeralaManduva from "./pages/projects/KeralaManduvaPage.jsx";
-import BaliHarmony from "./pages/projects/BaliHarmonyPage.jsx";
+import SVNSwapnlok from './pages/projects/SVN-SwapnlokPage.jsx';
+import NatureValley from './pages/projects/Nature-ValleyPage.jsx';
+import SugundhaMeadows from "./pages/projects/Sugundha-MeadowsPage.jsx";
+import CMRGoldfields from "./pages/projects/CMR-GoldfieldsPage.jsx";
+import PurnaSai from "./pages/projects/Purna-SaiPage.jsx";
 import Gallery from './pages/Gallery.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Contact from './pages/Contact.jsx';
@@ -40,10 +40,11 @@ function App() {
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/sitevisit" element={<SiteVisit />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/woodenvilla" element={<Woodenvilla />} />
-              <Route path="/projects/glassvilla" element={<GlassVilla />} />
-              <Route path="/projects/keralamanduva" element={<KeralaManduva />} />
-              <Route path="/projects/baliharmony" element={<BaliHarmony />} />
+              <Route path="/projects/SVN-SwapnlokPage" element={<SVNSwapnlok />} />
+              <Route path="/projects/Nature-ValleyPage" element={<NatureValley />} />
+              <Route path="/projects/Sugundha-MeadowsPage" element={<SugundhaMeadows />} />
+              <Route path="/projects/CMR-GoldfieldsPage" element={<CMRGoldfields />} />
+              <Route path="/projects/Purna-SaiPage" element={<PurnaSai />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/blogs" element={<Blogs/>} />
               <Route path="/contact" element={<Contact />} />
@@ -51,7 +52,7 @@ function App() {
             </Routes>
         
 
-          <ChatAssistant />
+          
           <Footer />
         
       </Router>

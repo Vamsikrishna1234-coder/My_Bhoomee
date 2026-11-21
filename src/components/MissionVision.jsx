@@ -1,99 +1,55 @@
+
 import React from "react";
 
-const MissionVision = () => {
+const VisionMission = () => {
+  const images = [
+    {
+      id: 1,
+      src: "/src/assets/images/vision.jpg",
+      alt: "Vision",
+    },
+    {
+      id: 2,
+      src: "/src/assets/images/mission.jpg",
+      alt: "Mission",
+    },
+    {
+      id: 3,
+      src: "/src/assets/images/values.jpg",
+      alt: "Values",
+    },
+  ];
+
   return (
-    <section className="py-16 px-6 bg-white text-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full bg-gray-100 px-5 py-12 sm:px-8 lg:py-16">
+      <div className="mx-auto max-w-[1800px]">
 
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 text-black animated-text">
-            Our Mission & Vision
-          </h2>
-          <div className="w-20 h-1 bg-black mx-auto"></div>
-        </div>
 
-        {/* Two Columns */}
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-3 md:gap-5 lg:gap-8">
 
-          {/* Mission */}
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black animated-text">
-              Our Mission
-            </h3>
+          <h1 className="col-span-1 text-center text-2xl font-medium leading-tight text-[#053279] sm:text-3xl md:col-span-3 lg:text-4xl">
+            Our Vision, Mission, and Values
+          </h1>
 
-            <p className="text-gray-800 mb-4 leading-relaxed text-lg animated-text">
-              To <span className="font-semibold text-black">revolutionize property ownership</span> by making it simple, secure,
-              and accessible to every Indian family through clarity and confidence.
-            </p>
-
-            <p className="text-gray-800 mb-4 leading-relaxed text-lg animated-text">
-              Our goal is to provide <span className="font-semibold text-black">complete transparency</span>, legal clarity,
-              and value-driven projects that bring long-lasting trust and growth.
-            </p>
-
-            <p className="text-gray-800 mb-6 leading-relaxed text-lg animated-text">
-              We focus on building relationships through integrity, guidance, and end-to-end support throughout
-              the buying journey.
-            </p>
-
-            <ul className="text-black space-y-2 text-lg">
-              <li className="animated-list-item">• 100% Legal & Verified Properties</li>
-              <li className="animated-list-item">• Complete Documentation Support</li>
-              <li className="animated-list-item">• Customer-First Approach</li>
-            </ul>
-          </div>
-
-          {/* Vision */}
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-black animated-text">
-              Our Vision
-            </h3>
-
-            <p className="text-gray-800 mb-4 leading-relaxed text-lg animated-text">
-              To become <span className="font-semibold text-black">India’s most trusted real estate brand</span>, recognized
-              for ethics, quality, and long-term value creation.
-            </p>
-
-            <p className="text-gray-800 mb-4 leading-relaxed text-lg animated-text">
-              We aim to build <span className="font-semibold text-black">sustainable communities</span> that enrich urban living
-              while staying environment-focused and future-ready.
-            </p>
-
-            <p className="text-gray-800 mb-6 leading-relaxed text-lg animated-text">
-              Our vision is to create remarkable developments that grow in value and serve generations to come.
-            </p>
-
-            <ul className="text-black space-y-2 text-lg">
-              <li className="animated-list-item">• Build 100+ Communities by 2030</li>
-              <li className="animated-list-item">• Eco-Friendly & Future-Proof Developments</li>
-              <li className="animated-list-item">• Leading Customer Satisfaction & Trust</li>
-            </ul>
-          </div>
+          {images.map((image) => (
+            <div
+              key={image.id}
+              className="flex w-full items-center justify-center"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-auto w-full max-w-[500px] object-contain"
+                loading="lazy"
+              />
+            </div>
+          ))}
 
         </div>
+
       </div>
-
-      {/* Animations (movement only, no color change) */}
-      <style>{`
-        .animated-text {
-          display: inline-block;
-          transition: transform 0.35s ease;
-        }
-        .animated-text:hover {
-          transform: translateY(-4px);
-        }
-
-        .animated-list-item {
-          display: block;
-          transition: transform 0.35s ease;
-        }
-        .animated-list-item:hover {
-          transform: translateY(-4px);
-        }
-      `}</style>
     </section>
   );
 };
 
-export default MissionVision;
+export default VisionMission;

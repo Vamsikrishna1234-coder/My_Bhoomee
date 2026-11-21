@@ -1,13 +1,15 @@
 import React from "react";
 import HeroSection from "../components/Herosection";
-import ProjectsHighlights from "../components/ProjectHighlights";
+import Abouthome from "../components/Aboutk";
 import AboutSection from "../components/About";
+import OngoingProjects from "../components/OngoingProjects";
 import Milestones from "../components/Milestones";
-import LocationHighlights from "../components/LocationHighlights";
-import FeaturedProperties from "../components/OngoingProjects";
-import GallerySection from "../components/Gallery";
+import PropertyTypes from "../components/PropertyTypes";
+import Journey from "../components/Journey";
+import Unique from "../components/Unique";
+import Homeform1 from "../components/Homeform1";
 import Testimonials from "../components/Testimonials";
-import FaqSection from "../components/FAQ";
+
 
 
 
@@ -17,14 +19,16 @@ const Home = () => {
   return (
     <main>                           
         <HeroSection />   
-        <ProjectsHighlights/>
+        <Abouthome />
         <AboutSection />
+        <OngoingProjects />
         <Milestones />
-        <LocationHighlights/>
-        <FeaturedProperties />
-        <GallerySection />
+        <PropertyTypes />
+        <Journey youtubeUrl="https://www.youtube.com/watch?v=wJYAwJKd9yE" />
+        <Unique />
+        <Homeform1 />
         <Testimonials />
-        <FaqSection />
+        
     </main>
   );
 }       

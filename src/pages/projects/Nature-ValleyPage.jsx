@@ -2,14 +2,20 @@ import React from "react";
 
 // EXACT correct path for your hero image:
 import Banner1 from "../../assets/images/home3.jpg";
-import Woodenvilla from "../../components/Woodenvilla"
+import NatureValley from "../../components/SVN-Swapnlokintro";
 
 
-const WoodenVillaPage = () => {
+const NatureValleyPage = () => {
   return (
     <>
       {/* ================= HERO SECTION ================= */}
       <section className="relative w-full h-[75vh] flex items-center justify-center">
+
+
+        <h1 className="absolute text-white text-4xl lg:text-6xl font-bold drop-shadow-lg">
+          Nature Valley
+        </h1>
+      
 
         {/* Hero Image */}
         <img
@@ -30,10 +36,10 @@ const WoodenVillaPage = () => {
 
       
 
-      {/* Wooden Villa Full Page Content */}
-      <Woodenvilla />
+      {/* Nature Valley Full Page Content */}
+      <NatureValley />
     </>
   );
 };
 
-export default WoodenVillaPage;
+export default NatureValleyPage;

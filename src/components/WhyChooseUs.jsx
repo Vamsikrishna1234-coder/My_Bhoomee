@@ -1,176 +1,163 @@
-import React, { useState } from "react";
-import { ChevronDown, MapPin, Shield, Users } from "lucide-react";
-import chooseus1 from "../assets/images/chooseus img1.jpg";
-import chooseus2 from "../assets/images/chooseus img2.jpg";
-import chooseus3 from "../assets/images/chooseus img3.jpg";
+
+import React from "react";
+import {
+  MapPin,
+  ShieldCheck,
+  Gem,
+  Users,
+  TrendingUp,
+  Handshake,
+  ArrowUpRight,
+} from "lucide-react";
+
+const reasons = [
+  {
+    number: "01",
+    title: "Strategic Locations",
+    description:
+      "Every development is thoughtfully positioned with convenient connectivity and access to essential destinations.",
+    icon: MapPin,
+  },
+  {
+    number: "02",
+    title: "Quality Development",
+    description:
+      "We focus on quality planning, reliable infrastructure, and attention to detail in every project.",
+    icon: Gem,
+  },
+  {
+    number: "03",
+    title: "Trust & Transparency",
+    description:
+      "We believe in honest communication, transparent processes, and building relationships based on trust.",
+    icon: ShieldCheck,
+  },
+  {
+    number: "04",
+    title: "Customer First",
+    description:
+      "Understanding customer needs and delivering meaningful property solutions remains our priority.",
+    icon: Users,
+  },
+  {
+    number: "05",
+    title: "Future-Ready Investments",
+    description:
+      "Our developments are planned with long-term usability, growth potential, and evolving lifestyle needs in mind.",
+    icon: TrendingUp,
+  },
+  {
+    number: "06",
+    title: "Lasting Relationships",
+    description:
+      "We value every customer relationship and strive to create experiences that go beyond property transactions.",
+    icon: Handshake,
+  },
+];
 
 const WhyChooseUs = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const reasons = [
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Verified Projects",
-      description:
-        "Every MyBhumi property is legally verified and approved, ensuring complete transparency and peace of mind.",
-      details: [
-        "100% RERA approved with complete documentation",
-        "Clear land titles with no legal disputes",
-        "Government-approved layouts",
-      ],
-      image: chooseus1,
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Prime Locations",
-      description:
-        "Our properties are strategically located with excellent connectivity and high potential for appreciation.",
-      details: [
-        "Close to major highways & transport hubs",
-        "Near schools, hospitals & shopping centers",
-        "High appreciation potential areas",
-      ],
-      image: chooseus2,
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Customer-First Approach",
-      description:
-        "From your first enquiry to registration, we offer personal guidance every step of the way.",
-      details: [
-        "Dedicated relationship manager",
-        "Flexible payment plans",
-        "Complete documentation assistance",
-      ],
-      image: chooseus3,
-    },
-  ];
-
-  const toggleAccordion = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full overflow-hidden bg-white px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black text-black mb-4">
-            Why Choose MyBhoomee?
+      <div className="mx-auto max-w-[1375px]">
+
+        {/* Section Heading */}
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#FBBD23] px-5 py-2 text-xs font-bold uppercase tracking-[3px] text-[#053279]">
+            <span className="h-2 w-2 rounded-full bg-[#FBBD23]" />
+            The Bhoomatha Advantage
+          </span>
+
+          <h2 className="text-3xl font-extrabold leading-tight text-[#053279] sm:text-4xl lg:text-5xl">
+            Why Choose
+            <span className="text-[#FBBD23]"> Bhoomatha?</span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Experience trust, transparency, and excellence in every plot you own.
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#053279] sm:text-base">
+            More than real estate, we deliver trust, thoughtful development,
+            and opportunities designed around your future.
           </p>
+
         </div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        {/* Six Feature Cards */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-          {/* Accordion */}
-          <div className="space-y-6">
-            {reasons.map((reason, index) => {
-              const isActive = activeIndex === index;
+          {reasons.map((item, index) => {
+            const Icon = item.icon;
 
-              return (
-                <div key={index}>
+            return (
+              <div
+                key={item.number}
+                className="group relative overflow-hidden rounded-2xl border border-[#053279]/15 bg-white p-7 transition-all duration-500 hover:-translate-y-2 hover:border-[#FBBD23] hover:shadow-[0_15px_40px_rgba(5,50,121,0.12)] sm:p-8"
+              >
 
-                  {/* HEADER */}
-                  <button
-                    onClick={() => toggleAccordion(index)}
-                    className={`
-                      w-full text-left rounded-2xl p-6 flex items-center justify-between
-                      transition-all duration-300
-                      border
-                      ${isActive
-                        ? "bg-black text-white border-black"
-                        : "bg-white text-black border-gray-200 hover:shadow-md"
-                      }
-                    `}
-                  >
-                    <div className="flex items-center gap-5">
-                      <div
-                        className={`
-                          w-14 h-14 rounded-2xl flex items-center justify-center
-                          border transition-all
-                          ${isActive
-                            ? "bg-white text-black border-white"
-                            : "bg-white text-black border-gray-300"
-                          }
-                        `}
-                      >
-                        {reason.icon}
-                      </div>
+                {/* Background Number */}
+                <span className="pointer-events-none absolute -right-2 -top-7 text-[115px] font-black leading-none text-[#053279]/[0.045] transition-colors duration-500 group-hover:text-[#FBBD23]/20">
+                  {item.number}
+                </span>
 
-                      <h3 className="text-xl font-bold">
-                        {reason.title}
-                      </h3>
-                    </div>
+                {/* Top Row */}
+                <div className="relative z-10 flex items-center justify-between">
 
-                    <ChevronDown
-                      className={`
-                        w-6 h-6 transition-transform duration-300
-                        ${isActive ? "rotate-180 text-white" : "text-black"}
-                      `}
-                    />
-                  </button>
-
-                  {/* CONTENT */}
-                  <div
-                    className={`
-                      overflow-hidden transition-all duration-500 ease-in-out
-                      ${isActive ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"}
-                    `}
-                  >
-                    <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                      <p className="text-gray-700 mb-5 leading-relaxed">
-                        {reason.description}
-                      </p>
-
-                      <ul className="space-y-3">
-                        {reason.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full border border-black flex items-center justify-center mt-0.5">
-                              <svg
-                                className="w-4 h-4 text-black"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={3}
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            </div>
-                            <span className="text-gray-700 font-medium">
-                              {detail}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#053279] text-[#FBBD23] transition-all duration-500 group-hover:rotate-6 group-hover:bg-[#FBBD23] group-hover:text-[#053279]">
+                    <Icon size={27} strokeWidth={1.8} />
                   </div>
 
-                </div>
-              );
-            })}
-          </div>
+                  <span className="text-2xl font-extrabold text-[#FBBD23]">
+                    {item.number}
+                  </span>
 
-          {/* Image */}
-          <div className="sticky top-24">
-            <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg">
-              <img
-                src={reasons[activeIndex ?? 0].image}
-                alt={reasons[activeIndex ?? 0].title}
-                className="w-full h-96 object-cover transition-all duration-700"
-              />
-            </div>
-          </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="relative z-10 mt-8">
+
+                  <h3 className="text-xl font-bold text-[#053279] transition-colors duration-300 group-hover:text-[#FBBD23]">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-[#053279]">
+                    {item.description}
+                  </p>
+
+                </div>
+
+                {/* Bottom Accent */}
+                <div className="relative z-10 mt-7 flex items-center justify-between">
+
+                  <div className="h-1 w-12 rounded-full bg-[#FBBD23] transition-all duration-500 group-hover:w-24" />
+
+                  <ArrowUpRight
+                    size={21}
+                    className="text-[#053279] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#FBBD23]"
+                  />
+
+                </div>
+
+              </div>
+            );
+          })}
 
         </div>
+
+        {/* Bottom Brand Statement */}
+        <div className="mt-14 overflow-hidden rounded-2xl bg-[#053279] px-6 py-9 text-center sm:px-10 sm:py-12">
+
+          <h3 className="text-2xl font-bold text-white sm:text-3xl">
+            Your Trust. Our Commitment.
+          </h3>
+
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/90 sm:text-base">
+            At Bhoomatha Group, every project begins with a commitment to
+            quality and ends with a relationship built on trust.
+          </p>
+
+          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-[#FBBD23]" />
+
+        </div>
+
       </div>
     </section>
   );

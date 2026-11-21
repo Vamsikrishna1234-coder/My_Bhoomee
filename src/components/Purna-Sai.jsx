@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import bali1 from "../assets/images/bali/bali img1.jpeg";
 import bali2 from "../assets/images/bali/bali img2.jpeg";
 import bali3 from "../assets/images/bali/bali img3.jpeg";
-import eastPlan from "../assets/images/wooden/Wooden Villa Plan.png";
-import westPlan from "../assets/images/wooden/Wooden Villa Plan.png";
+
 
 const villaImages = [bali1, bali2, bali3];
 
@@ -107,7 +106,7 @@ const BaliHarmony = () => {
                     onClick={() => setZoomedImage(plan.img)}
                   >
                     <img
-                      src={plan.img}
+                      src="#"
                       alt={plan.label}
                       className="w-full h-[350px] object-contain p-4"
                     />
